@@ -94,7 +94,8 @@ function SearchRouterInput({
                         spellCheck={false}
                         enterKeyHint="search"
                         accessibilityLabel={translate('search.searchPlaceholder')}
-                        disabled={disabled}
+                        // icommented the below line
+                        // disabled={disabled}
                         onSubmitEditing={onSubmit}
                         shouldUseDisabledStyles={false}
                         textInputContainerStyles={[styles.borderNone, styles.pb0]}
