@@ -1,6 +1,6 @@
 import {Str} from 'expensify-common';
 import React, {useCallback} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {FallbackAvatar} from '@components/Icon/Expensicons';
 import MultipleAvatars from '@components/MultipleAvatars';
 import PressableWithFeedback from '@components/Pressable/PressableWithFeedback';
@@ -61,7 +61,7 @@ function InviteMemberListItem<TItem extends ListItem>({
         <BaseListItem
             pressableStyle={[[shouldHighlightSelectedItem && item.isSelected && styles.activeComponentBG]]}
             item={item}
-            wrapperStyle={[styles.flex1, styles.justifyContentBetween, styles.sidebarLinkInner, styles.userSelectNone, styles.peopleRow]}
+            wrapperStyle={[styles.flex1, styles.justifyContentBetween, styles.sidebarLinkInner, styles.userSelectNone as ViewStyle, styles.peopleRow]}
             isFocused={isFocused}
             isDisabled={isDisabled}
             showTooltip={showTooltip}

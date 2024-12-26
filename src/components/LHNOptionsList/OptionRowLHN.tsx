@@ -67,7 +67,7 @@ function OptionRowLHN({reportID, isFocused = false, onSelectRow = () => {}, opti
 
     const renderGBRTooltip = useCallback(
         () => (
-            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap, styles.textAlignCenter, styles.gap1]}>
+            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap, styles.gap1]}>
                 <Icon
                     src={Expensicons.Lightbulb}
                     fill={theme.tooltipHighlightText}
@@ -201,7 +201,8 @@ function OptionRowLHN({reportID, isFocused = false, onSelectRow = () => {}, opti
                                     ReportActionComposeFocusManager.focus();
                                     onSelectRow(optionItem, popoverAnchor);
                                 }}
-                                onMouseDown={(event) => {
+                                // onMouseDown={(event) => {
+                                onPressIn={(event) => {
                                     // Allow composer blur on right click
                                     if (!event) {
                                         return;
@@ -224,7 +225,8 @@ function OptionRowLHN({reportID, isFocused = false, onSelectRow = () => {}, opti
                                     styles.flexRow,
                                     styles.alignItemsCenter,
                                     styles.justifyContentBetween,
-                                    styles.sidebarLink,
+                                    // icommented the below line 
+                                    // styles.sidebarLink,
                                     styles.sidebarLinkInnerLHN,
                                     StyleUtils.getBackgroundColorStyle(theme.sidebar),
                                     isFocused ? styles.sidebarLinkActive : null,

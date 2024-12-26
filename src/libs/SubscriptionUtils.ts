@@ -147,7 +147,7 @@ function getOverdueGracePeriodDate(): OnyxEntry<number> {
  * @returns Whether the workspace owner has an overdue grace period.
  */
 function hasOverdueGracePeriod(): boolean {
-    return !!ownerBillingGraceEndPeriod ?? false;
+    return !!ownerBillingGraceEndPeriod || false;
 }
 
 /**
@@ -182,7 +182,7 @@ function hasCardAuthenticatedError() {
  * @returns Whether there is a billing dispute pending.
  */
 function hasBillingDisputePending() {
-    return !!billingDisputePending ?? false;
+    return !!billingDisputePending || false;
 }
 
 /**
@@ -238,14 +238,14 @@ function hasCardExpiringSoon(): boolean {
  * @returns Whether there is a retry billing error.
  */
 function hasRetryBillingError(): boolean {
-    return !!retryBillingFailed ?? false;
+    return !!retryBillingFailed || false;
 }
 
 /**
  * @returns Whether the retry billing was successful.
  */
 function isRetryBillingSuccessful(): boolean {
-    return !!retryBillingSuccessful ?? false;
+    return !!retryBillingSuccessful || false;
 }
 
 type SubscriptionStatus = {

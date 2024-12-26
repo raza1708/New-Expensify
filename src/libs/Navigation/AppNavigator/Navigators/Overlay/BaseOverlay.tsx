@@ -1,6 +1,6 @@
 import {useCardAnimation} from '@react-navigation/stack';
 import React from 'react';
-import {Animated, View} from 'react-native';
+import {Animated, View, ViewStyle} from 'react-native';
 import PressableWithoutFeedback from '@components/Pressable/PressableWithoutFeedback';
 import useLocalize from '@hooks/useLocalize';
 import useThemeStyles from '@hooks/useThemeStyles';
@@ -33,7 +33,7 @@ function BaseOverlay({shouldUseNativeStyles, onPress, isModalOnTheLeft = false}:
              we have 30px draggable ba at the top and the rest of the dimmed area is clickable. On other devices,
              everything behaves normally like one big pressable */}
                 <PressableWithoutFeedback
-                    style={[styles.draggableTopBar, styles.boxShadowNone]}
+                    style={[styles.draggableTopBar]}
                     onPress={onPress}
                     accessibilityLabel={translate('common.close')}
                     role={CONST.ROLE.BUTTON}
@@ -41,7 +41,7 @@ function BaseOverlay({shouldUseNativeStyles, onPress, isModalOnTheLeft = false}:
                     tabIndex={-1}
                 />
                 <PressableWithoutFeedback
-                    style={[styles.flex1, styles.boxShadowNone]}
+                    style={[styles.flex1]}
                     onPress={onPress}
                     accessibilityLabel={translate('common.close')}
                     role={CONST.ROLE.BUTTON}

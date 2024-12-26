@@ -1,0 +1,1 @@
+My React-native project is showing error on opening the my app on Android device (after successful build and metro bundling) unexpected token '{'. import call expects exactly one argument., stack: no stack    and my Android mobile smart engine is giving me a notification which says that your app is crashing due to some issues.

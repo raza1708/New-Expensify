@@ -4,6 +4,7 @@ import getOperatingSystem from '@libs/getOperatingSystem';
 import localeCompare from '@libs/LocaleCompare';
 import CONST from '@src/CONST';
 import bindHandlerToKeydownEvent from './bindHandlerToKeydownEvent';
+import { KeyCommandEvent } from './bindHandlerToKeydownEvent/types';
 
 const operatingSystem = getOperatingSystem();
 
@@ -89,7 +90,7 @@ Object.values(CONST.KEYBOARD_SHORTCUTS).forEach((shortcut) => {
 
     const shortcutTrigger = (operatingSystem && shortcut.trigger[operatingSystem as keyof typeof shortcut.trigger]) ?? shortcut.trigger.DEFAULT;
 
-    KeyCommand.addListener(shortcutTrigger, (keyCommandEvent, event) => bindHandlerToKeydownEvent(getDisplayName, eventHandlers, keyCommandEvent, event));
+    KeyCommand.addListener(shortcutTrigger, (keyCommandEvent: KeyCommandEvent, event: KeyboardEvent) => bindHandlerToKeydownEvent(getDisplayName, eventHandlers, keyCommandEvent, event));
 });
 
 /**

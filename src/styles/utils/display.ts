@@ -23,27 +23,27 @@ export default {
      * Web-only style.
      */
     dInline: {
-        display: 'inline',
+        display: 'inline' as any,
     },
 
     /**
      * Web-only style.
      */
     dInlineFlex: {
-        display: 'inline-flex',
+        display: 'inline-flex' as any,
     },
 
     /**
      * Web-only style.
      */
     dBlock: {
-        display: 'block',
+        display: 'block' as any,
     },
 
     /**
      * Web-only style.
      */
     dGrid: {
-        display: 'grid',
+        display: 'grid' as any,
     },
 } satisfies Record<string, ViewStyle>;

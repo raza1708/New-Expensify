@@ -520,7 +520,8 @@ function updateWorkspaceMembersRole(policyID: string, accountIDs: number[], newR
 
 function requestWorkspaceOwnerChange(policyID: string) {
     const policy = getPolicy(policyID);
-    const ownershipChecks = {...policyOwnershipChecks?.[policyID]} ?? {};
+    const ownershipChecks = {...policyOwnershipChecks?.[policyID]};
+    // const ownershipChecks = {...policyOwnershipChecks?.[policyID]} ?? {};
 
     const changeOwnerErrors = Object.keys(policy?.errorFields?.changeOwner ?? {});
 

@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {AttachmentContext} from '@components/AttachmentContext';
 import MentionReportContext from '@components/HTMLEngineProvider/HTMLRenderers/MentionReportRenderer/MentionReportContext';
 import MultipleAvatars from '@components/MultipleAvatars';
@@ -60,8 +60,8 @@ function ChatListItem<TItem extends ListItem>({
     return (
         <BaseListItem
             item={item}
-            pressableStyle={[[styles.selectionListPressableItemWrapper, styles.textAlignLeft, item.isSelected && styles.activeComponentBG, item.cursorStyle]]}
-            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone]}
+            pressableStyle={[[styles.selectionListPressableItemWrapper, styles.textAlignLeft as ViewStyle, item.isSelected && styles.activeComponentBG, item.cursorStyle]]}
+            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone as ViewStyle]}
             containerStyle={styles.mb2}
             isFocused={isFocused}
             isDisabled={isDisabled}

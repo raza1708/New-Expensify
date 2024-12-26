@@ -167,7 +167,7 @@ function ReportActionItemFragment({
                 >
                     <Text
                         numberOfLines={isSingleLine ? 1 : undefined}
-                        style={[styles.chatItemMessageHeaderSender, isSingleLine ? styles.pre : styles.preWrap]}
+                        style={[styles.chatItemMessageHeaderSender, isSingleLine ? styles.webViewStyles.tagStyles.pre : styles.preWrap]}
                     >
                         {fragment?.text}
                     </Text>

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {View} from 'react-native';
+import {TextStyle, View, ViewStyle} from 'react-native';
 import type {Emoji} from '@assets/emojis/types';
 import Icon from '@components/Icon';
 import * as Expensicons from '@components/Icon/Expensicons';
@@ -89,7 +89,8 @@ function AddReactionBubble({onSelectEmoji, reportAction, onPressOpenPicker, onWi
         <Tooltip text={translate('emojiReactions.addReactionTooltip')}>
             <PressableWithFeedback
                 ref={ref}
-                style={({hovered, pressed}) => [styles.emojiReactionBubble, styles.userSelectNone, StyleUtils.getEmojiReactionBubbleStyle(hovered || pressed, false, isContextMenu)]}
+                style ={({hovered, pressed})  => [styles.emojiReactionBubble , styles.userSelectNone as ViewStyle, StyleUtils.getEmojiReactionBubbleStyle(hovered || pressed, false, isContextMenu)]}
+
                 onPress={Session.checkIfActionIsAllowed(onPress)}
                 onMouseDown={(event) => {
                     // Allow text input blur when Add reaction is right clicked
@@ -104,7 +105,8 @@ function AddReactionBubble({onSelectEmoji, reportAction, onPressOpenPicker, onWi
                 role={CONST.ROLE.BUTTON}
                 // disable dimming
                 pressDimmingValue={1}
-                dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                data-selection-scraper-hidden-element = {true}
+                // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
             >
                 {({hovered, pressed}) => (
                     <>

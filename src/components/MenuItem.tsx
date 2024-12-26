@@ -1,9 +1,9 @@
-import type {ImageContentFit} from 'expo-image';
-import type {ReactElement, ReactNode} from 'react';
-import React, {forwardRef, useContext, useMemo} from 'react';
-import type {GestureResponderEvent, StyleProp, TextStyle, ViewStyle} from 'react-native';
-import {ActivityIndicator, View} from 'react-native';
-import type {ValueOf} from 'type-fest';
+import type { ImageContentFit } from 'expo-image';
+import type { ReactElement, ReactNode } from 'react';
+import React, { forwardRef, useContext, useMemo } from 'react';
+import type { GestureResponderEvent, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import type { ValueOf } from 'type-fest';
 import useResponsiveLayout from '@hooks/useResponsiveLayout';
 import useStyleUtils from '@hooks/useStyleUtils';
 import useTheme from '@hooks/useTheme';
@@ -13,31 +13,32 @@ import convertToLTR from '@libs/convertToLTR';
 import * as DeviceCapabilities from '@libs/DeviceCapabilities';
 import getButtonState from '@libs/getButtonState';
 import Parser from '@libs/Parser';
-import type {AvatarSource} from '@libs/UserUtils';
+import type { AvatarSource } from '@libs/UserUtils';
 import variables from '@styles/variables';
 import * as Session from '@userActions/Session';
 import CONST from '@src/CONST';
-import type {Icon as IconType} from '@src/types/onyx/OnyxCommon';
-import type {TooltipAnchorAlignment} from '@src/types/utils/AnchorAlignment';
+import type { Icon as IconType } from '@src/types/onyx/OnyxCommon';
+import type { TooltipAnchorAlignment } from '@src/types/utils/AnchorAlignment';
 import type IconAsset from '@src/types/utils/IconAsset';
 import Avatar from './Avatar';
 import Badge from './Badge';
 import DisplayNames from './DisplayNames';
-import type {DisplayNameWithTooltip} from './DisplayNames/types';
+import type { DisplayNameWithTooltip } from './DisplayNames/types';
 import FormHelpMessage from './FormHelpMessage';
 import Hoverable from './Hoverable';
 import Icon from './Icon';
 import * as Expensicons from './Icon/Expensicons';
 import * as defaultWorkspaceAvatars from './Icon/WorkspaceDefaultAvatars';
-import {MenuItemGroupContext} from './MenuItemGroup';
+import { MenuItemGroupContext } from './MenuItemGroup';
 import MultipleAvatars from './MultipleAvatars';
-import type {PressableRef} from './Pressable/GenericPressable/types';
+import type { PressableRef } from './Pressable/GenericPressable/types';
 import PressableWithSecondaryInteraction from './PressableWithSecondaryInteraction';
 import RenderHTML from './RenderHTML';
 import SelectCircle from './SelectCircle';
 import SubscriptAvatar from './SubscriptAvatar';
 import Text from './Text';
 import EducationalTooltip from './Tooltip/EducationalTooltip';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 type IconProps = {
     /** Flag to choose between avatar image or an icon */
@@ -451,10 +452,10 @@ function MenuItem(
     const styles = useThemeStyles();
     const StyleUtils = useStyleUtils();
     const combinedStyle = [styles.popoverMenuItem, style];
-    const {shouldUseNarrowLayout} = useResponsiveLayout();
-    const {isExecuting, singleExecution, waitForNavigate} = useContext(MenuItemGroupContext) ?? {};
+    const { shouldUseNarrowLayout } = useResponsiveLayout();
+    const { isExecuting, singleExecution, waitForNavigate } = useContext(MenuItemGroupContext) ?? {};
 
-    const isDeleted = style && Array.isArray(style) ? style.includes(styles.offlineFeedback.deleted) : false;
+    const isDeleted = style && Array.isArray(style) ? style.includes(styles.offlineFeedback.deleted as ViewStyle) : false;
     const descriptionVerticalMargin = shouldShowDescriptionOnTop ? styles.mb1 : styles.mt1;
     const fallbackAvatarSize = viewMode === CONST.OPTION_MODE.COMPACT ? CONST.AVATAR_SIZE.SMALL : CONST.AVATAR_SIZE.DEFAULT;
     const firstIcon = floatRightAvatars.at(0);
@@ -466,11 +467,12 @@ function MenuItem(
             shouldPutLeftPaddingWhenNoIcon || (icon && !Array.isArray(icon)) ? (avatarSize === CONST.AVATAR_SIZE.SMALL ? styles.ml2 : styles.ml3) : {},
             shouldShowBasicTitle ? {} : styles.textStrong,
             numberOfLinesTitle !== 1 ? styles.preWrap : styles.pre,
-            interactive && disabled ? {...styles.userSelectNone} : {},
+            interactive && disabled ? { ...styles.userSelectNone } : {},
             styles.ltr,
             isDeleted ? styles.offlineFeedback.deleted : {},
         ],
-        titleStyle ?? {},
+        // icommented the below line
+        // titleStyle ?? {},
     );
     const descriptionTextStyles = StyleUtils.combineStyles<TextStyle>([
         styles.textLabelSupporting,
@@ -484,14 +486,14 @@ function MenuItem(
         if (!title || !shouldParseTitle) {
             return '';
         }
-        return Parser.replace(title, {shouldEscapeText, disabledRules: excludedMarkdownRules});
+        return Parser.replace(title, { shouldEscapeText, disabledRules: excludedMarkdownRules });
     }, [title, shouldParseTitle, shouldEscapeText, excludedMarkdownRules]);
 
     const helperHtml = useMemo(() => {
         if (!helperText || !shouldParseHelperText) {
             return '';
         }
-        return Parser.replace(helperText, {shouldEscapeText});
+        return Parser.replace(helperText, { shouldEscapeText });
     }, [helperText, shouldParseHelperText, shouldEscapeText]);
 
     const processedTitle = useMemo(() => {
@@ -505,7 +507,7 @@ function MenuItem(
         }
 
         if (shouldTruncateTitle) {
-            titleToWrap = Parser.truncateHTML(`<comment>${titleToWrap}</comment>`, characterLimit, {ellipsis: '...'});
+            titleToWrap = Parser.truncateHTML(`<comment>${titleToWrap}</comment>`, characterLimit, { ellipsis: '...' });
             return titleToWrap;
         }
 
@@ -562,10 +564,11 @@ function MenuItem(
     };
 
     return (
-        <View onBlur={onBlur}>
+        // <View onBlur={onBlur}>
+        <TouchableWithoutFeedback onBlur={onBlur}>
             {!!label && !isLabelHoverable && (
                 <View style={[styles.ph5, labelStyle]}>
-                    <Text style={StyleUtils.combineStyles([styles.sidebarLinkText, styles.optionAlternateText, styles.textLabelSupporting, styles.pre])}>{label}</Text>
+                    <Text style={StyleUtils.combineStyles([styles.sidebarLinkText, styles.optionAlternateText, styles.textLabelSupporting, styles.pre])}> {label} </Text>
                 </View>
             )}
             <EducationalTooltip
@@ -589,13 +592,13 @@ function MenuItem(
                                 wrapperStyle={outerWrapperStyle}
                                 activeOpacity={variables.pressDimValue}
                                 opacityAnimationDuration={0}
-                                style={({pressed}) =>
+                                style={({ pressed }) =>
                                     [
                                         containerStyle,
                                         combinedStyle,
                                         !interactive && styles.cursorDefault,
                                         !shouldRemoveBackground &&
-                                            StyleUtils.getButtonBackgroundColorStyle(getButtonState(focused || isHovered, pressed, success, disabled, interactive), true),
+                                        StyleUtils.getButtonBackgroundColorStyle(getButtonState(focused || isHovered, pressed, success, disabled, interactive), true),
                                         ...(Array.isArray(wrapperStyle) ? wrapperStyle : [wrapperStyle]),
                                         shouldGreyOutWhenDisabled && disabled && styles.buttonOpacityDisabled,
                                         isHovered && interactive && !focused && !pressed && !shouldRemoveBackground && !shouldRemoveHoverBackground && styles.hoveredComponentBG,
@@ -609,7 +612,7 @@ function MenuItem(
                                 accessible
                                 onFocus={onFocus}
                             >
-                                {({pressed}) => (
+                                {({ pressed }) => (
                                     <View style={[styles.flex1]}>
                                         <View style={[styles.flexRow]}>
                                             <View style={[styles.flexColumn, styles.flex1]}>
@@ -665,11 +668,11 @@ function MenuItem(
                                                                             displayInDefaultIconColor
                                                                                 ? undefined
                                                                                 : iconFill ??
-                                                                                  StyleUtils.getIconFillColor(
-                                                                                      getButtonState(focused || isHovered, pressed, success, disabled, interactive),
-                                                                                      true,
-                                                                                      isPaneMenu,
-                                                                                  )
+                                                                                StyleUtils.getIconFillColor(
+                                                                                    getButtonState(focused || isHovered, pressed, success, disabled, interactive),
+                                                                                    true,
+                                                                                    isPaneMenu,
+                                                                                )
                                                                         }
                                                                         additionalStyles={additionalIconStyles}
                                                                     />
@@ -743,7 +746,9 @@ function MenuItem(
                                                                     <Text
                                                                         style={combinedTitleTextStyle}
                                                                         numberOfLines={numberOfLinesTitle || undefined}
-                                                                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: interactive && disabled}}
+                                                                        // icommented below line
+                                                                        // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: interactive && disabled}}
+                                                                        selection-scrapper-hidden-element={true}
                                                                     >
                                                                         {renderTitleContent()}
                                                                     </Text>
@@ -891,11 +896,11 @@ function MenuItem(
                         ))}
                 </View>
             </EducationalTooltip>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 
 MenuItem.displayName = 'MenuItem';
 
-export type {AvatarProps, IconProps, MenuItemBaseProps, MenuItemProps, NoIcon};
+export type { AvatarProps, IconProps, MenuItemBaseProps, MenuItemProps, NoIcon };
 export default forwardRef(MenuItem);

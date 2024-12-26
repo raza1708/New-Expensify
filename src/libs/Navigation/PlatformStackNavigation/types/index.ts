@@ -4,7 +4,6 @@ import type {
     ParamListBase,
     RouteProp,
     RouterFactory,
-    ScreenOptionsOrCallback,
     StackNavigationState,
     StackRouterOptions,
 } from '@react-navigation/native';
@@ -66,9 +65,19 @@ type PlatformStackNavigatorProps<
     ParamList extends ParamListBase,
     RouteName extends keyof ParamList = keyof ParamList,
     RouterOptions extends PlatformStackRouterOptions = PlatformStackRouterOptions,
-> = DefaultNavigatorOptions<ParamList, PlatformStackNavigationState<ParamList>, PlatformStackNavigationOptions, PlatformStackNavigationEventMap, RouteName> &
+> = DefaultNavigatorOptions<ParamList, PlatformStackNavigationState<ParamList>, PlatformStackNavigationOptions, PlatformStackNavigationEventMap> &
     RouterOptions &
     StackNavigationConfig;
+
+
+// Define the type for a function that takes screen props and returns navigation options
+type ScreenOptionsCallback<ParamList extends ParamListBase, RouteName extends keyof ParamList> =
+(props: PlatformStackScreenProps<ParamList, RouteName>) => PlatformStackNavigationOptions;
+
+// Define the ScreenOptionsOrCallback type, which can be either an object of navigation options or a callback function
+type ScreenOptionsOrCallback<PlatformStackNavigationOptions, ParamList extends ParamListBase, RouteName extends keyof ParamList> =
+| PlatformStackNavigationOptions
+| ScreenOptionsCallback<ParamList, RouteName>;
 
 // The "screenOptions" and "defaultScreenOptions" can either be an object of navigation options or
 // a factory function that returns the navigation options based on route and navigation props.
@@ -91,6 +100,8 @@ export type {
     PlatformStackRouteProp,
     PlatformStackScreenProps,
     PlatformStackNavigatorProps,
+    ScreenOptionsCallback,
+    ScreenOptionsOrCallback
 };
 
 export * from './NavigationBuilder';

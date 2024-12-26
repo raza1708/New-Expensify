@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import Icon from '@components/Icon';
 import * as Expensicons from '@components/Icon/Expensicons';
 import MultipleAvatars from '@components/MultipleAvatars';
@@ -45,7 +45,7 @@ function TableListItem<TItem extends ListItem>({
         <BaseListItem
             item={item}
             pressableStyle={[[styles.selectionListPressableItemWrapper, item.isSelected && styles.activeComponentBG, item.cursorStyle]]}
-            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone, styles.alignItemsCenter]}
+            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone as ViewStyle, styles.alignItemsCenter]}
             containerStyle={styles.mb2}
             isFocused={isFocused}
             isDisabled={isDisabled}

@@ -260,7 +260,7 @@ function BaseTextInput(
         (autoGrow || !!contentWidth) && StyleUtils.getWidthStyle(textInputWidth),
         !hideFocusedState && isFocused && styles.borderColorFocus,
         (!!hasError || !!errorText) && styles.borderColorDanger,
-        autoGrowHeight && {scrollPaddingTop: typeof maxAutoGrowHeight === 'number' ? 2 * maxAutoGrowHeight : undefined},
+        autoGrowHeight && {paddingTop: typeof maxAutoGrowHeight === 'number' ? 2 * maxAutoGrowHeight : undefined},
         isAutoGrowHeightMarkdown && styles.pb2,
     ]);
     const isMultiline = multiline || autoGrowHeight;
@@ -345,11 +345,11 @@ function BaseTextInput(
                                 </View>
                             )}
                             {!!prefixCharacter && (
-                                <View style={[styles.textInputPrefixWrapper, prefixContainerStyle]}>
-                                    <Text
-                                        tabIndex={-1}
+                                <View style={[styles.textInputPrefixWrapper, prefixContainerStyle]} tabIndex={-1}>
+                                    <Text 
                                         style={[styles.textInputPrefix, !hasLabel && styles.pv0, styles.pointerEventsNone, prefixStyle]}
-                                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                                        data-selection-scrapper-hidden-element={true}
+                                        // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
                                     >
                                         {prefixCharacter}
                                     </Text>
@@ -390,7 +390,9 @@ function BaseTextInput(
                                     // for the issue mentioned here https://github.com/Expensify/App/issues/26735
                                     // Set overflow property to enable the parent flexbox to shrink its size
                                     // (See https://github.com/Expensify/App/issues/41766)
-                                    !isMultiline && Browser.isMobileChrome() && {boxSizing: 'content-box', height: undefined, ...styles.overflowAuto},
+
+                                    // !isMultiline && Browser.isMobileChrome() && {boxSizing: 'content-box' as any, height: undefined, ...styles.overflowAuto},
+                                    !isMultiline && Browser.isMobileChrome() && { height: undefined, ...styles.overflowAuto},
 
                                     // Stop scrollbar flashing when breaking lines with autoGrowHeight enabled.
                                     ...(autoGrowHeight && !isAutoGrowHeightMarkdown
@@ -417,11 +419,11 @@ function BaseTextInput(
                                 markdownStyle={markdownStyle}
                             />
                             {!!suffixCharacter && (
-                                <View style={[styles.textInputSuffixWrapper, suffixContainerStyle]}>
+                                <View style={[styles.textInputSuffixWrapper, suffixContainerStyle]} tabIndex={-1}>
                                     <Text
-                                        tabIndex={-1}
                                         style={[styles.textInputSuffix, !hasLabel && styles.pv0, styles.pointerEventsNone, suffixStyle]}
-                                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                                        data-selection-scrapper-hidden-element={true}
+                                        // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
                                     >
                                         {suffixCharacter}
                                     </Text>
@@ -470,7 +472,7 @@ function BaseTextInput(
             </View>
             {!!contentWidth && (
                 <View
-                    style={[inputStyle as ViewStyle, styles.hiddenElementOutsideOfWindow, styles.visibilityHidden, styles.wAuto, inputPaddingLeft]}
+                    style={[inputStyle as ViewStyle, styles.hiddenElementOutsideOfWindow, styles.visibilityHidden as ViewStyle, styles.wAuto, inputPaddingLeft]}
                     onLayout={(e) => {
                         if (e.nativeEvent.layout.width === 0 && e.nativeEvent.layout.height === 0) {
                             return;

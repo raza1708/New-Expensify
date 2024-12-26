@@ -14,6 +14,7 @@ import Performance from '@libs/Performance';
 import SidebarLinksData from '@pages/home/sidebar/SidebarLinksData';
 import CONST from '@src/CONST';
 import ONYXKEYS from '@src/ONYXKEYS';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function BaseSidebarScreen() {
     const styles = useThemeStyles();
@@ -41,7 +42,7 @@ function BaseSidebarScreen() {
         <ScreenWrapper
             includeSafeAreaPaddingBottom={false}
             shouldEnableKeyboardAvoidingView={false}
-            style={[styles.sidebar, Browser.isMobile() ? styles.userSelectNone : {}, styles.pb0]}
+            style={[styles.sidebar, Browser.isMobile() ? styles.badgeSuccess : {}, styles.pb0]}
             testID={BaseSidebarScreen.displayName}
             includePaddingTop={false}
         >

@@ -15,7 +15,7 @@ export default {
      * Web-only style.
      */
     pFixed: {
-        position: 'fixed',
+        position: 'absolute',
     },
 
     t0: {

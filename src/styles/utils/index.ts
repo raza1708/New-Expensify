@@ -363,39 +363,42 @@ function getZoomSizingStyle(
         // When both width and height are smaller than container(modal) size, set the height by multiplying zoomScale if it is zoomed in.
         if (zoomScale >= 1) {
             return {
-                height: `${imgHeight * zoomScale}px`,
-                width: `${imgWidth * zoomScale}px`,
+                height: `${imgHeight * zoomScale}%`,
+                width: `${imgWidth * zoomScale}%`,
             };
         }
 
         // If image height and width are bigger than container size, display image with original size because original size is bigger and position absolute.
         return {
-            height: `${imgHeight}px`,
-            width: `${imgWidth}px`,
-            top,
-            left,
+            height: `${imgHeight}%`,
+            width: `${imgWidth}%`,
+            top: undefined,
+            left: undefined,
         };
     }
 
     // If image is not zoomed in and image size is smaller than container size, display with original size based on offset and position absolute.
     if (zoomScale > 1) {
         return {
-            height: `${imgHeight}px`,
-            width: `${imgWidth}px`,
-            top,
-            left,
+            height: `${imgHeight}%`,
+            width: `${imgWidth}%`,
+            top: undefined,
+            left: undefined,
         };
     }
 
     // If image is bigger than container size, display full image in the screen with scaled size (fit by container size) and position absolute.
     // top, left offset should be different when displaying long or wide image.
-    const scaledTop = `${Math.max((containerHeight - imgHeight * zoomScale) / 2, 0)}px`;
-    const scaledLeft = `${Math.max((containerWidth - imgWidth * zoomScale) / 2, 0)}px`;
+
+
+    // icommented these two variables
+    // const scaledTop = `${Math.max((containerHeight - imgHeight * zoomScale) / 2, 0)}%`;
+    // const scaledLeft = `${Math.max((containerWidth - imgWidth * zoomScale) / 2, 0)}%`;
     return {
-        height: `${imgHeight * zoomScale}px`,
-        width: `${imgWidth * zoomScale}px`,
-        top: scaledTop,
-        left: scaledLeft,
+        height: `${imgHeight * zoomScale}%`,
+        width: `${imgWidth * zoomScale}%`,
+        top: `${Math.max((containerHeight - imgHeight * zoomScale) / 2, 0)}%`,
+        left: `${Math.max((containerWidth - imgWidth * zoomScale) / 2, 0)}%`,
     };
 }
 
@@ -1515,7 +1518,7 @@ const createStyleUtils = (theme: ThemeColors, styles: ThemeStyles) => ({
         ...positioning.r4,
         ...styles.cursorDefault,
         ...styles.userSelectNone,
-        overflowAnchor: 'none',
+        // overflowAnchor: 'none',
         position: 'absolute',
         zIndex: 8,
     }),
@@ -1598,7 +1601,7 @@ const createStyleUtils = (theme: ThemeColors, styles: ThemeStyles) => ({
     },
 
     getTextOverflowStyle: (overflow: string): TextStyle => ({
-        textOverflow: overflow,
+        // textOverflow: overflow,
     }),
 
     /**

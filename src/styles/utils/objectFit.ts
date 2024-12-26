@@ -1,5 +1,4 @@
-import type {ViewStyle} from 'react-native';
-
+import { ImageStyle } from 'react-native';
 export default {
     oFCover: {
         objectFit: 'cover',
@@ -11,6 +10,6 @@ export default {
         objectFit: 'contain',
     },
     oFNone: {
-        objectFit: 'none',
+        objectFit: 'scale-down',
     },
-} satisfies Record<string, ViewStyle>;
+} satisfies Record<string, ImageStyle>;

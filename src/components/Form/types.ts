@@ -5,23 +5,23 @@ import type {ValueOf} from 'type-fest';
 // import type AddressSearch from '@components/AddressSearch';
 // import type AmountForm from '@components/AmountForm';
 // import type AmountPicker from '@components/AmountPicker';
-// import type AmountTextInput from '@components/AmountTextInput';
+import type AmountTextInput from '@components/AmountTextInput';
 import type {FileObject} from '@components/AttachmentModal';
-// import type CheckboxWithLabel from '@components/CheckboxWithLabel';
+import type CheckboxWithLabel from '@components/CheckboxWithLabel';
 // import type CountryPicker from '@components/CountryPicker';
 // import type CountrySelector from '@components/CountrySelector';
 // import type CurrencySelector from '@components/CurrencySelector';
 // import type DatePicker from '@components/DatePicker';
-// import type EmojiPickerButtonDropdown from '@components/EmojiPicker/EmojiPickerButtonDropdown';
+import type EmojiPickerButtonDropdown from '@components/EmojiPicker/EmojiPickerButtonDropdown';
 // import type PercentageForm from '@components/PercentageForm';
-// import type Picker from '@components/Picker';
+import type Picker from '@components/Picker';
 // import type PushRowWithModal from '@components/PushRowWithModal';
 // import type RadioButtons from '@components/RadioButtons';
-// import type RoomNameInput from '@components/RoomNameInput';
+import type RoomNameInput from '@components/RoomNameInput';
 // import type SingleChoiceQuestion from '@components/SingleChoiceQuestion';
 // import type StatePicker from '@components/StatePicker';
 // import type StateSelector from '@components/StateSelector';
-// import type TextInput from '@components/TextInput';
+import type TextInput from '@components/TextInput';
 // import type TextPicker from '@components/TextPicker';
 // import type UploadFile from '@components/UploadFile';
 // import type ValuePicker from '@components/ValuePicker';
@@ -40,12 +40,14 @@ import type {BaseForm} from '@src/types/form/Form';
  * This type specifies all the inputs that can be used with `InputWrapper` component. Make sure to update it
  * when adding new inputs or removing old ones.
  */
-// type ValidInputs =
-//     | typeof TextInput
-//     | typeof AmountTextInput
+type ValidInputs =
+    | typeof TextInput
+    | typeof AmountTextInput
+    | typeof CheckboxWithLabel
+    | typeof Picker
+    | typeof EmojiPickerButtonDropdown
+    | typeof RoomNameInput;
 //     | typeof SingleChoiceQuestion
-//     | typeof CheckboxWithLabel
-//     | typeof Picker
 //     | typeof AddressSearch
 //     | typeof CountrySelector
 //     | typeof CurrencySelector
@@ -54,14 +56,14 @@ import type {BaseForm} from '@src/types/form/Form';
 //     | typeof BusinessTypePicker
 //     | typeof DimensionTypeSelector
 //     | typeof StateSelector
-//     | typeof RoomNameInput
+    
 //     | typeof ValuePicker
 //     | typeof DatePicker
 //     | typeof RadioButtons
 //     | typeof AmountPicker
 //     | typeof TextPicker
 //     | typeof AddPlaidBankAccount
-//     | typeof EmojiPickerButtonDropdown
+    
 //     | typeof NetSuiteCustomListPicker
 //     | typeof NetSuiteCustomFieldMappingPicker
 //     | typeof NetSuiteMenuWithTopDescriptionForm
@@ -174,7 +176,7 @@ type FormInputErrors<TFormID extends OnyxFormKey = OnyxFormKey> = Partial<Record
 
 export type {
     FormProps,
-    // ValidInputs,
+    ValidInputs,
     InputComponentValueProps,
     FormValue,
     ValueTypeKey,

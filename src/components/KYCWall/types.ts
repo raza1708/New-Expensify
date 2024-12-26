@@ -1,4 +1,4 @@
-import type {RefObject} from 'react';
+import type {ReactNode, RefObject} from 'react';
 import type {GestureResponderEvent, View} from 'react-native';
 import type {OnyxEntry} from 'react-native-onyx';
 import type {ValueOf} from 'type-fest';
@@ -62,7 +62,7 @@ type KYCWallProps = {
     onSuccessfulKYC: (iouPaymentType?: PaymentMethodType, currentSource?: Source) => void;
 
     /** Children to build the KYC */
-    children: (continueAction: (event: GestureResponderEvent | KeyboardEvent | undefined, method?: PaymentMethodType) => void, anchorRef: RefObject<View>) => void;
+    children: (continueAction: (event: GestureResponderEvent | KeyboardEvent | undefined, method?: PaymentMethodType) => void, anchorRef: RefObject<View>) => ReactNode;
 };
 
 export type {AnchorPosition, KYCWallProps, PaymentMethod, DomRect, PaymentMethodType, Source};

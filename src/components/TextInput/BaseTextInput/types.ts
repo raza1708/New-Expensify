@@ -125,6 +125,9 @@ type CustomBaseTextInputProps = {
     /** Whether to apply styles when input is disabled */
     shouldUseDisabledStyles?: boolean;
 
+    /** Whether to display something or not when focus/event is disabled */
+    disabled?: boolean;
+
     /** Style for the prefix */
     prefixStyle?: StyleProp<TextStyle>;
 

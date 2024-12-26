@@ -69,6 +69,10 @@ function checkServerDataReady() {
     resolveIsReadyPromise?.();
 }
 
+resolveTryNewDotStatus = (value?: Promise<void>) => {
+    // Implementation of the function
+    console.log('Function called');
+  };
 /**
  * Check if user completed HybridApp onboarding
  */

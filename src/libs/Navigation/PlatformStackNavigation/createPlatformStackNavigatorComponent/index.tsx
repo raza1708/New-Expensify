@@ -36,8 +36,8 @@ function createPlatformStackNavigatorComponent<RouterOptions extends PlatformSta
             RouterOptions,
             StackActionHelpers<ParamListBase>,
             StackNavigationOptions,
-            StackNavigationEventMap,
-            PlatformStackNavigationOptions
+            StackNavigationEventMap
+            // PlatformStackNavigationOptions
         >(
             createRouter,
             {
@@ -48,7 +48,8 @@ function createPlatformStackNavigatorComponent<RouterOptions extends PlatformSta
                 screenListeners,
                 initialRouteName,
             } as PlatformNavigationBuilderOptions<PlatformStackNavigationOptions, StackNavigationEventMap, ParamListBase, RouterOptions>,
-            convertToWebNavigationOptions,
+            // icommented below line to get rid of error
+            // convertToWebNavigationOptions,
         );
 
         const customCodeProps = useMemo<CustomCodeProps<StackNavigationOptions, StackNavigationEventMap, ParamListBase, StackActionHelpers<ParamListBase>>>(

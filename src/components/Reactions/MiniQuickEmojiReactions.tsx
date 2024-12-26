@@ -71,7 +71,8 @@ function MiniQuickEmojiReactions({
                 >
                     <Text
                         style={[styles.miniQuickEmojiReactionText, styles.userSelectNone]}
-                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                        data-selection-scraper-hidden-element = {true}
+                        // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
                     >
                         {EmojiUtils.getPreferredEmojiCode(emoji, preferredSkinTone)}
                     </Text>

@@ -255,7 +255,7 @@ function AttachmentPickerWithMenuItems({
                                             Report.setIsComposerFullSize(reportID, false);
                                         }}
                                         // Keep focus on the composer when Collapse button is clicked.
-                                        onMouseDown={(e) => e.preventDefault()}
+                                        onPressIn={(e) => e.preventDefault()}
                                         style={styles.composerSizeButton}
                                         disabled={isBlockedFromConcierge || disabled}
                                         role={CONST.ROLE.BUTTON}
@@ -277,7 +277,7 @@ function AttachmentPickerWithMenuItems({
                                             Report.setIsComposerFullSize(reportID, true);
                                         }}
                                         // Keep focus on the composer when Expand button is clicked.
-                                        onMouseDown={(e) => e.preventDefault()}
+                                        onPressIn={(e) => e.preventDefault()}
                                         style={styles.composerSizeButton}
                                         disabled={isBlockedFromConcierge || disabled}
                                         role={CONST.ROLE.BUTTON}

@@ -454,7 +454,8 @@ function BaseSelectionList<TItem extends ListItem>(
     const header = () => (
         <>
             {!headerMessage && canSelectMultiple && shouldShowSelectAll && (
-                <View style={[styles.userSelectNone, styles.peopleRow, styles.ph5, styles.pb3, listHeaderWrapperStyle, styles.selectionListStickyHeader]}>
+                // <View style={[styles.userSelectNone, styles.peopleRow, styles.ph5, styles.pb3, listHeaderWrapperStyle, styles.selectionListStickyHeader]}>
+                 <View style={[styles.peopleRow, styles.ph5, styles.pb3, listHeaderWrapperStyle, styles.selectionListStickyHeader]}>
                     <View style={[styles.flexRow, styles.alignItemsCenter]}>
                         <Checkbox
                             accessibilityLabel={translate('workspace.people.selectAll')}
@@ -464,13 +465,15 @@ function BaseSelectionList<TItem extends ListItem>(
                         />
                         {!customListHeader && (
                             <PressableWithFeedback
-                                style={[styles.userSelectNone, styles.flexRow, styles.alignItemsCenter]}
+                                // style={[styles.userSelectNone, styles.flexRow, styles.alignItemsCenter]}
+                                style={[styles.flexRow, styles.alignItemsCenter]}
                                 onPress={selectAllRow}
                                 accessibilityLabel={translate('workspace.people.selectAll')}
                                 role="button"
                                 accessibilityState={{checked: flattenedSections.allSelected}}
                                 disabled={flattenedSections.allOptions.length === flattenedSections.disabledOptionsIndexes.length}
-                                dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                                // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                                data-selection-scrapper-hidden-element={true}
                                 onMouseDown={shouldPreventDefaultFocusOnSelectRow ? (e) => e.preventDefault() : undefined}
                             >
                                 <Text style={[styles.textStrong, styles.ph3]}>{translate('workspace.people.selectAll')}</Text>

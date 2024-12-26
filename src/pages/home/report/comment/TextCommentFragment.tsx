@@ -108,7 +108,8 @@ function TextCommentFragment({fragment, styleAsDeleted, styleAsMuted = false, so
                 <>
                     <Text
                         style={[containsOnlyEmojis && styles.onlyEmojisTextLineHeight, styles.userSelectNone]}
-                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                        data-selection-scrapper-hidden-element = {true}
+                        // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
                     >
                         {' '}
                     </Text>

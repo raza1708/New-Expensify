@@ -229,7 +229,7 @@ function PopoverMenu({
                 iconFill={theme.icon}
                 style={hasBackButtonText ? styles.pv0 : undefined}
                 title={hasBackButtonText ? previouslySelectedItem.backButtonText : previouslySelectedItem.text}
-                titleStyle={hasBackButtonText ? styles.createMenuHeaderText : undefined}
+                titleStyle={hasBackButtonText ? styles.createMenuHeaderText as ViewStyle: undefined}
                 shouldShowBasicTitle={hasBackButtonText}
                 shouldCheckActionAllowedOnPress={false}
                 description={previouslySelectedItem.description}

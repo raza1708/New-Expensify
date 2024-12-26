@@ -7,6 +7,7 @@ import useTheme from '@hooks/useTheme';
 import useThemeStyles from '@hooks/useThemeStyles';
 import variables from '@styles/variables';
 import TransactionListItemRow from './TransactionListItemRow';
+import { ViewStyle } from 'react-native';
 
 function TransactionListItem<TItem extends ListItem>({
     item,
@@ -37,7 +38,7 @@ function TransactionListItem<TItem extends ListItem>({
         styles.mh0,
     ];
 
-    const listItemWrapperStyle = [
+    const listItemWrapperStyle: any = [
         styles.flex1,
         styles.userSelectNone,
         isLargeScreenWidth ? {...styles.flexRow, ...styles.justifyContentBetween, ...styles.alignItemsCenter} : {...styles.flexColumn, ...styles.alignItemsStretch},

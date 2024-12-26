@@ -1,21 +1,21 @@
-import {PortalProvider} from '@gorhom/portal';
+import { PortalProvider } from '@gorhom/portal';
 import React from 'react';
-import {LogBox} from 'react-native';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {KeyboardProvider} from 'react-native-keyboard-controller';
-import {PickerStateProvider} from 'react-native-picker-select';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
- import '../wdyr';
+import { LogBox } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
+import { PickerStateProvider } from 'react-native-picker-select';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import '../wdyr';
 // import ActiveElementRoleProvider from './components/ActiveElementRoleProvider';
 // import ActiveWorkspaceContextProvider from './components/ActiveWorkspaceProvider';
 import ColorSchemeWrapper from './components/ColorSchemeWrapper';
 import ComposeProviders from './components/ComposeProviders';
 import CustomStatusBarAndBackground from './components/CustomStatusBarAndBackground';
 import CustomStatusBarAndBackgroundContextProvider from './components/CustomStatusBarAndBackground/CustomStatusBarAndBackgroundContextProvider';
-// import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 // import HTMLEngineProvider from './components/HTMLEngineProvider';
 import InitialURLContextProvider from './components/InitialURLContextProvider';
-import {LocaleContextProvider} from './components/LocaleContextProvider';
+import { LocaleContextProvider } from './components/LocaleContextProvider';
 import OnyxProvider from './components/OnyxProvider';
 // import PopoverContextProvider from './components/PopoverProvider';
 // import SafeArea from './components/SafeArea';
@@ -37,8 +37,8 @@ import useDefaultDragAndDrop from './hooks/useDefaultDragAndDrop';
 // import {ReportIDsContextProvider} from './hooks/useReportIDs';
 // import OnyxUpdateManager from './libs/actions/OnyxUpdateManager';
 // import {ReportAttachmentsProvider} from './pages/home/report/ReportAttachmentsContext';
-import type {Route} from './ROUTES';
-import {SplashScreenStateContextProvider} from './SplashScreenStateContext';
+import type { Route } from './ROUTES';
+import { SplashScreenStateContextProvider } from './SplashScreenStateContext';
 
 type AppProps = {
     /** URL passed to our top-level React Native component by HybridApp. Will always be undefined in "pure" NewDot builds. */
@@ -54,11 +54,11 @@ LogBox.ignoreLogs([
     'No native ExponentConstants module found',
 ]);
 
-const fill = {flex: 1};
+const fill = { flex: 1 };
 
-const StrictModeWrapper = CONFIG.USE_REACT_STRICT_MODE_IN_DEV ? React.StrictMode : ({children}: {children: React.ReactElement}) => children;
+const StrictModeWrapper = CONFIG.USE_REACT_STRICT_MODE_IN_DEV ? React.StrictMode : ({ children }: { children: React.ReactElement }) => children;
 
-function App({url}: AppProps) {
+function App({ url }: AppProps) {
     useDefaultDragAndDrop();
     // OnyxUpdateManager();
 
@@ -69,14 +69,14 @@ function App({url}: AppProps) {
                     <GestureHandlerRootView style={fill}>
                         <ComposeProviders
                             components={[
-                                // OnyxProvider,
+                                OnyxProvider,
                                 // ThemeProvider,
                                 // ThemeStylesProvider,
                                 // ThemeIllustrationsProvider,
                                 SafeAreaProvider,
                                 PortalProvider,
                                 // SafeArea,
-                                // LocaleContextProvider,
+                                LocaleContextProvider,
                                 // HTMLEngineProvider,
                                 // KeyboardStateProvider,
                                 // PopoverContextProvider,
@@ -85,7 +85,7 @@ function App({url}: AppProps) {
                                 // ReportAttachmentsProvider,
                                 PickerStateProvider,
                                 // EnvironmentProvider,
-                                // CustomStatusBarAndBackgroundContextProvider,
+                                CustomStatusBarAndBackgroundContextProvider,
                                 // ActiveElementRoleProvider,
                                 // ActiveWorkspaceContextProvider,
                                 // ReportIDsContextProvider,
@@ -98,6 +98,11 @@ function App({url}: AppProps) {
                             ]}
                         >
                             <CustomStatusBarAndBackground />
+                            <ErrorBoundary errorMessage="NewExpensify crash caught by error boundary">
+                                <ColorSchemeWrapper>
+                                    <Expensify />
+                                </ColorSchemeWrapper>
+                            </ErrorBoundary>
                         </ComposeProviders>
                     </GestureHandlerRootView>
                 </InitialURLContextProvider>
@@ -111,8 +116,4 @@ App.displayName = 'App';
 export default App;
 
 // Add this after the <CustomStatusBarAndBackground /> component
-// let comment = <ErrorBoundary errorMessage="NewExpensify crash caught by error boundary">
-// <ColorSchemeWrapper>
-//     <Expensify />
-// </ColorSchemeWrapper>
-// </ErrorBoundary>
+

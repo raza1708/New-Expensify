@@ -33,7 +33,7 @@ function DeeplinkRedirectLoadingIndicator({openLinkInBrowser}: DeeplinkRedirectL
                     />
                 </View>
                 <Text style={[styles.textHeadline, styles.textXXLarge]}>{translate('deeplinkWrapper.launching')}</Text>
-                <View style={[styles.mt2, styles.textAlignCenter]}>
+                <View style={[styles.mt2]}>
                     <Text>{translate('deeplinkWrapper.loggedInAs', {email: currentUserLogin ?? ''})}</Text>
                     <Text style={[styles.textAlignCenter]}>
                         {translate('deeplinkWrapper.doNotSeePrompt')} <TextLink onPress={() => openLinkInBrowser(true)}>{translate('deeplinkWrapper.tryAgain')}</TextLink>

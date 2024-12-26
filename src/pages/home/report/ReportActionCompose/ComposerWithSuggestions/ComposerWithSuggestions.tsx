@@ -767,8 +767,8 @@ function ComposerWithSuggestions(
                         onFocus();
                     }}
                     onBlur={onBlur}
-                    onClick={setShouldBlockSuggestionCalcToFalse}
-                    onPasteFile={(file: FileObject) => {
+                    onPress={setShouldBlockSuggestionCalcToFalse}
+                    onPasteFile={(file) => {
                         textInputRef.current?.blur();
                         displayFileInModal(file);
                     }}
@@ -796,6 +796,7 @@ function ComposerWithSuggestions(
                 measureParentContainerAndReportCursor={measureParentContainerAndReportCursor}
                 isGroupPolicyReport={isGroupPolicyReport}
                 policyID={policyID}
+                // icommented below line
                 // Input
                 value={value}
                 selection={selection}

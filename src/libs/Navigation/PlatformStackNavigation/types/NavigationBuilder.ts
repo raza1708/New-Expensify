@@ -3,14 +3,14 @@ import type {
     DefaultNavigatorOptions,
     Descriptor,
     EventMapBase,
-    NavigationBuilderOptions,
     NavigationHelpers,
     NavigationProp,
     ParamListBase,
     RouteProp,
     StackActionHelpers,
-    useNavigationBuilder,
+    useNavigationBuilder,   
 } from '@react-navigation/native';
+import type {NavigationBuilderOptions} from '@react-navigation/core/src/useNavigationBuilder'
 import type {PlatformSpecificEventMap, PlatformSpecificNavigationOptions, PlatformStackNavigationOptions, PlatformStackNavigationState, PlatformStackRouterOptions} from '.';
 
 // Represents the options passed to useNavigationBuilder for creating a custom navigation builder,
@@ -23,13 +23,19 @@ type PlatformNavigationBuilderOptions<
 > = DefaultNavigatorOptions<ParamList, PlatformStackNavigationState<ParamList>, NavigationOptions, EventMap> & NavigationBuilderOptions<NavigationOptions> & RouterOptions;
 
 // Represents the return type of the useNavigationBuilder function using the types from PlatformStackNavigation.
+
 type PlatformNavigationBuilderResult<
     NavigationOptions extends PlatformSpecificNavigationOptions,
     EventMap extends PlatformSpecificEventMap & EventMapBase,
     ParamList extends ParamListBase = ParamListBase,
     RouterOptions extends PlatformStackRouterOptions = PlatformStackRouterOptions,
     ActionHelpers extends StackActionHelpers<ParamList> = StackActionHelpers<ParamList>,
-> = ReturnType<typeof useNavigationBuilder<PlatformStackNavigationState<ParamList>, RouterOptions, ActionHelpers, PlatformStackNavigationOptions, EventMap, NavigationOptions>>;
+// > = ReturnType<typeof useNavigationBuilder<PlatformStackNavigationState<ParamList>, RouterOptions, ActionHelpers, PlatformStackNavigationOptions, EventMap, NavigationOptions>>;
+
+> = ReturnType<typeof useNavigationBuilder>;
+
+
+
 
 // Represents the type of the navigation object returned by useNavigationBuilder
 type PlatformNavigationBuilderNavigation<

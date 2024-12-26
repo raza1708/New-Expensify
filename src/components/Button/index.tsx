@@ -276,7 +276,8 @@ function Button(
                     link && styles.fontWeightNormal,
                     link && styles.fontSizeLabel,
                 ]}
-                dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                data-selection-scrapper-hidden-element={true}
+            //    dataSet ={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
             >
                 {text}
             </Text>
@@ -347,9 +348,10 @@ function Button(
                 />
             )}
             <PressableWithFeedback
-                dataSet={{
-                    listener: pressOnEnter ? CONST.KEYBOARD_SHORTCUTS.ENTER.shortcutKey : undefined,
-                }}
+                // dataSet={{
+                //     listener: pressOnEnter ? CONST.KEYBOARD_SHORTCUTS.ENTER.shortcutKey : undefined,
+                // }}
+                data-listener={pressOnEnter ? CONST.KEYBOARD_SHORTCUTS.ENTER.shortcutKey : undefined}
                 ref={ref}
                 onLayout={onLayout}
                 onPress={(event) => {
@@ -374,7 +376,8 @@ function Button(
                 }}
                 onPressIn={onPressIn}
                 onPressOut={onPressOut}
-                onMouseDown={onMouseDown}
+                //icommented
+                // onMouseDown={onMouseDown}
                 disabled={isLoading || isDisabled}
                 wrapperStyle={[
                     isDisabled ? {...styles.cursorDisabled, ...styles.noSelect} : {},

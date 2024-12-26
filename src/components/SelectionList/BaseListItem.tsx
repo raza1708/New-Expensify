@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Icon from '@components/Icon';
 import * as Expensicons from '@components/Icon/Expensicons';
 import OfflineWithFeedback from '@components/OfflineWithFeedback';
@@ -12,6 +12,7 @@ import useTheme from '@hooks/useTheme';
 import useThemeStyles from '@hooks/useThemeStyles';
 import CONST from '@src/CONST';
 import type {BaseListItemProps, ListItem} from './types';
+import userSelect from '@styles/utils/userSelect';
 
 function BaseListItem<TItem extends ListItem>({
     item,
@@ -47,7 +48,7 @@ function BaseListItem<TItem extends ListItem>({
 
     // Sync focus on an item
     useSyncFocus(pressableRef, !!isFocused, shouldSyncFocus);
-    const handleMouseLeave = (e: React.MouseEvent<Element, MouseEvent>) => {
+    const handleMouseLeave = (e: React.MouseEvent<Element, MouseEvent> | MouseEvent) => {
         e.stopPropagation();
         setMouseUp();
     };
@@ -95,7 +96,9 @@ function BaseListItem<TItem extends ListItem>({
                 role={CONST.ROLE.BUTTON}
                 hoverDimmingValue={1}
                 hoverStyle={[!item.isDisabled && styles.hoveredComponentBG, hoverStyle]}
-                dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true, [CONST.INNER_BOX_SHADOW_ELEMENT]: true}}
+                // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true, [CONST.INNER_BOX_SHADOW_ELEMENT]: true}}
+                data-selection-scrapper-hidden-element={true}
+                data-inner-box-shadow-element={true}
                 onMouseDown={(e) => e.preventDefault()}
                 id={keyForList ?? ''}
                 style={[

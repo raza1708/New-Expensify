@@ -46,7 +46,7 @@ function Socials() {
             {socialList.map((social: Social) => (
                 <PressableWithoutFeedback
                     key={social.link}
-                    href={social.link}
+                    ref={social.link}
                     onPress={(e) => {
                         e?.preventDefault();
                         Link.openExternalLink(social.link);
@@ -55,12 +55,14 @@ function Socials() {
                     style={[styles.mr1, styles.mt1]}
                     shouldUseAutoHitSlop={false}
                 >
-                    {({hovered, pressed}) => (
+                    {/* {({hovered, pressed}) => ( */}
+                    {({ pressed}) => (
                         <Icon
                             src={social.iconURL}
                             height={variables.iconSizeLarge}
                             width={variables.iconSizeLarge}
-                            fill={hovered || pressed ? theme.link : theme.textLight}
+                            fill={ pressed ? theme.link : theme.textLight}
+                            // fill={hovered || pressed ? theme.link : theme.textLight}
                         />
                     )}
                 </PressableWithoutFeedback>

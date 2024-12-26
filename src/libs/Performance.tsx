@@ -3,7 +3,7 @@ import isObject from 'lodash/isObject';
 import lodashTransform from 'lodash/transform';
 import React, {forwardRef, Profiler} from 'react';
 import {Alert, InteractionManager} from 'react-native';
-import type {PerformanceEntry, PerformanceMark, PerformanceMeasure, ReactNativePerformance, Performance as RNPerformance} from 'react-native-performance';
+import {PerformanceEntry, PerformanceMark, PerformanceMeasure, ReactNativePerformance, Performance as RNPerformance} from 'react-native-performance';
 import type {PerformanceObserverEntryList} from 'react-native-performance/lib/typescript/performance-observer';
 import CONST from '@src/CONST';
 import isE2ETestSession from './E2E/isE2ETestSession';
@@ -221,6 +221,8 @@ if (Metrics.canCapturePerformanceMetrics()) {
      * @param commitTime when React committed this update
      * @param interactions the Set of interactions belonging to this update
      */
+
+    
     Performance.traceRender = (
         id: string,
         phase: Phase,
@@ -251,7 +253,7 @@ if (Metrics.canCapturePerformanceMetrics()) {
             const WithRenderTrace: React.ComponentType<P & React.RefAttributes<unknown>> = forwardRef((props: P, ref) => (
                 <Profiler
                     id={id}
-                    onRender={Performance.traceRender}
+                    onRender={Performance.traceRender as any}
                 >
                     <WrappedComponent
                         // eslint-disable-next-line react/jsx-props-no-spreading

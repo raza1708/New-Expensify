@@ -41,7 +41,8 @@ function CarouselItem({item, onPress, isFocused, isModalHovered}: CarouselItemPr
         >
             <Text
                 style={[styles.buttonSmallText, styles.userSelectNone]}
-                dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+                data-selection-scraper-hidden-element = {true}
+                // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
             >
                 {isHidden ? translate('moderation.revealMessage') : translate('moderation.hideMessage')}
             </Text>

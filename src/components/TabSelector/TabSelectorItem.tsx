@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Animated} from 'react-native';
+import {Animated, ViewStyle} from 'react-native';
 import PressableWithFeedback from '@components/Pressable/PressableWithFeedback';
 import useThemeStyles from '@hooks/useThemeStyles';
 import CONST from '@src/CONST';
@@ -39,14 +39,14 @@ function TabSelectorItem({icon, title = '', onPress = () => {}, backgroundColor 
     return (
         <AnimatedPressableWithFeedback
             accessibilityLabel={title}
-            style={[styles.tabSelectorButton, styles.tabBackground(isHovered, isActive, backgroundColor), styles.userSelectNone]}
+            style={[styles.tabSelectorButton, styles.tabBackground(isHovered, isActive, backgroundColor), styles.userSelectNone as ViewStyle]}
             wrapperStyle={[styles.flex1]}
             onPress={onPress}
             onHoverIn={() => setIsHovered(true)}
             onHoverOut={() => setIsHovered(false)}
             role={CONST.ROLE.BUTTON}
-            dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
-        >
+            // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+            data-selection-scrapper-hidden-element={true} >
             <TabIcon
                 icon={icon}
                 activeOpacity={styles.tabOpacity(isHovered, isActive, activeOpacity, inactiveOpacity).opacity}

@@ -369,7 +369,7 @@ function ReportActionCompose({
 
     const renderWorkspaceChatTooltip = useCallback(
         () => (
-            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap, styles.textAlignCenter, styles.gap1]}>
+            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap, styles.gap1]}>
                 <Icon
                     src={Expensicons.Lightbulb}
                     fill={theme.tooltipHighlightText}

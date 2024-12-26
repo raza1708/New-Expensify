@@ -164,7 +164,7 @@ function BaseTextInput(
     };
 
     const onPress = (event?: GestureResponderEvent | KeyboardEvent) => {
-        if (!!inputProps.disabled || !event) {
+        if (!!inputProps.disabled|| !event) {
             return;
         }
 
@@ -258,7 +258,7 @@ function BaseTextInput(
         (autoGrow || !!contentWidth) && StyleUtils.getWidthStyle(textInputWidth),
         !hideFocusedState && isFocused && styles.borderColorFocus,
         (!!hasError || !!errorText) && styles.borderColorDanger,
-        autoGrowHeight && {scrollPaddingTop: typeof maxAutoGrowHeight === 'number' ? 2 * maxAutoGrowHeight : undefined},
+        autoGrowHeight && {paddingTop: typeof maxAutoGrowHeight === 'number' ? 2 * maxAutoGrowHeight : undefined},
         isAutoGrowHeightMarkdown && styles.pb2,
     ]);
 
@@ -317,12 +317,12 @@ function BaseTextInput(
                                 </View>
                             )}
                             {!!prefixCharacter && (
-                                <View style={[styles.textInputPrefixWrapper, prefixContainerStyle]}>
+                                <View style={[styles.textInputPrefixWrapper, prefixContainerStyle]} tabIndex={-1}>
                                     <Text
-                                        tabIndex={-1}
+                                        // tabIndex={-1}
                                         style={[styles.textInputPrefix, !hasLabel && styles.pv0, styles.pointerEventsNone, prefixStyle]}
-                                        dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
-                                    >
+                                        data-selection-scrapper-hidden-element={true}
+                                        >
                                         {prefixCharacter}
                                     </Text>
                                 </View>
@@ -423,7 +423,7 @@ function BaseTextInput(
             </View>
             {!!contentWidth && (
                 <View
-                    style={[inputStyle as ViewStyle, styles.hiddenElementOutsideOfWindow, styles.visibilityHidden, styles.wAuto, inputPaddingLeft]}
+                    style={[inputStyle as ViewStyle, styles.hiddenElementOutsideOfWindow, styles.visibilityHidden as ViewStyle, styles.wAuto, inputPaddingLeft]}
                     onLayout={(e) => {
                         if (e.nativeEvent.layout.width === 0 && e.nativeEvent.layout.height === 0) {
                             return;

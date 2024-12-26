@@ -1,12 +1,13 @@
-import type {MarkdownStyle} from '@expensify/react-native-live-markdown';
+import type { MarkdownStyle } from '@expensify/react-native-live-markdown';
 import mimeDb from 'mime-db';
-import type {ForwardedRef} from 'react';
-import React, {useCallback, useEffect, useMemo, useRef} from 'react';
-import type {NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputPasteEventData} from 'react-native';
-import {StyleSheet} from 'react-native';
-import type {FileObject} from '@components/AttachmentModal';
-import type {ComposerProps} from '@components/Composer/types';
-import type {AnimatedMarkdownTextInputRef} from '@components/RNMarkdownTextInput';
+import type { ForwardedRef } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import type { NativeSyntheticEvent, TextInput, TextInputChangeEventData, TargetedEvent } from 'react-native';
+// import type {NativeSyntheticEvent, TextInput, TextInputChangeEventData, TextInputPasteEventData} from 'react-native';
+import { StyleSheet } from 'react-native';
+import type { FileObject } from '@components/AttachmentModal';
+import type { ComposerProps } from '@components/Composer/types';
+import type { AnimatedMarkdownTextInputRef } from '@components/RNMarkdownTextInput';
 import RNMarkdownTextInput from '@components/RNMarkdownTextInput';
 import useAutoFocusInput from '@hooks/useAutoFocusInput';
 import useMarkdownStyle from '@hooks/useMarkdownStyle';
@@ -19,17 +20,36 @@ import * as EmojiUtils from '@libs/EmojiUtils';
 import * as FileUtils from '@libs/fileDownload/FileUtils';
 import CONST from '@src/CONST';
 
+declare module 'react-native' {
+    interface TextInputProps {
+      onPaste?:
+      | ((e: NativeSyntheticEvent<TextInputPasteEventData>) => void)
+      | undefined;
+      onClear?:
+      | ((e: NativeSyntheticEvent<TextInputChangeEventData>) => void)
+      | undefined;
+    }
+  }
+
+export interface TextInputPasteEventData extends TargetedEvent {
+    items: Array<{
+        type: string;      // The type of the clipboard content (e.g., 'text/plain', 'application/pdf', etc.)
+        data: string;     // The actual content from the clipboard, typically a URI or base64 data
+    }>;
+}
+
+
 const excludeNoStyles: Array<keyof MarkdownStyle> = [];
 const excludeReportMentionStyle: Array<keyof MarkdownStyle> = ['mentionReport'];
 
 function Composer(
     {
-        onClear: onClearProp = () => {},
-        onPasteFile = () => {},
+        onClear: onClearProp = () => { },
+        onPasteFile = () => { },
         isDisabled = false,
         maxLines,
         isComposerFullSize = false,
-        setIsFullComposerAvailable = () => {},
+        setIsFullComposerAvailable = () => { },
         autoFocus = false,
         style,
         // On native layers we like to have the Text Input not focused so the
@@ -43,14 +63,14 @@ function Composer(
     ref: ForwardedRef<TextInput>,
 ) {
     const textInput = useRef<AnimatedMarkdownTextInputRef | null>(null);
-    const {isFocused, shouldResetFocusRef} = useResetComposerFocus(textInput);
+    const { isFocused, shouldResetFocusRef } = useResetComposerFocus(textInput);
     const textContainsOnlyEmojis = useMemo(() => EmojiUtils.containsOnlyEmojis(value ?? ''), [value]);
     const theme = useTheme();
     const markdownStyle = useMarkdownStyle(value, !isGroupPolicyReport ? excludeReportMentionStyle : excludeNoStyles);
     const styles = useThemeStyles();
     const StyleUtils = useStyleUtils();
 
-    const {inputCallbackRef, inputRef: autoFocusInputRef} = useAutoFocusInput();
+    const { inputCallbackRef, inputRef: autoFocusInputRef } = useAutoFocusInput();
 
     useEffect(() => {
         if (autoFocus === !!autoFocusInputRef.current) {
@@ -83,25 +103,34 @@ function Composer(
     }, []);
 
     const onClear = useCallback(
-        ({nativeEvent}: NativeSyntheticEvent<TextInputChangeEventData>) => {
+        ({ nativeEvent }: NativeSyntheticEvent<TextInputChangeEventData>) => {
             onClearProp(nativeEvent.text);
         },
         [onClearProp],
     );
 
+
     const pasteFile = useCallback(
         (e: NativeSyntheticEvent<TextInputPasteEventData>) => {
             const clipboardContent = e.nativeEvent.items.at(0);
+            if (!clipboardContent) {
+                return;        // No items in clipboard, exit early
+            }
             if (clipboardContent?.type === 'text/plain') {
                 return;
             }
             const mimeType = clipboardContent?.type ?? '';
             const fileURI = clipboardContent?.data;
+
+            // Check if fileURI exists and is a valid URL
+            if (!fileURI || typeof fileURI !== 'string') {
+                return;          // Invalid file URI, exit early
+            }
             const baseFileName = fileURI?.split('/').pop() ?? 'file';
-            const {fileName: stem, fileExtension: originalFileExtension} = FileUtils.splitExtensionFromFileName(baseFileName);
+            const { fileName: stem, fileExtension: originalFileExtension } = FileUtils.splitExtensionFromFileName(baseFileName);
             const fileExtension = originalFileExtension || (mimeDb[mimeType].extensions?.[0] ?? 'bin');
             const fileName = `${stem}.${fileExtension}`;
-            const file: FileObject = {uri: fileURI, name: fileName, type: mimeType};
+            const file: FileObject = { uri: fileURI, name: fileName, type: mimeType };
             onPasteFile(file);
         },
         [onPasteFile],
@@ -118,7 +147,7 @@ function Composer(
             placeholderTextColor={theme.placeholderText}
             ref={setTextInputRef}
             value={value}
-            onContentSizeChange={(e) => updateIsFullComposerAvailable({maxLines, isComposerFullSize, isDisabled, setIsFullComposerAvailable}, e, styles, true)}
+            onContentSizeChange={(e) => updateIsFullComposerAvailable({ maxLines, isComposerFullSize, isDisabled, setIsFullComposerAvailable }, e, styles, true)}
             rejectResponderTermination={false}
             smartInsertDelete={false}
             textAlignVertical="center"

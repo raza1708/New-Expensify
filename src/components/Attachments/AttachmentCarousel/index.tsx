@@ -181,7 +181,7 @@ function AttachmentCarousel({report, source, onNavigate, setDownloadButtonVisibi
 
     const extractItemKey = useCallback(
         (item: Attachment, index: number) =>
-            typeof item.source === 'string' || typeof item.source === 'number' ? `source-${item.source}` : `reportActionID-${item.reportActionID}` ?? `index-${index}`,
+            typeof item.source === 'string' || typeof item.source === 'number' ? `source-${item.source}` : (item.reportActionID ? `reportActionID-${item.reportActionID}` : `index-${index}`),
         [],
     );
 
@@ -270,6 +270,7 @@ function AttachmentCarousel({report, source, onNavigate, setDownloadButtonVisibi
             style={[styles.flex1, styles.attachmentCarouselContainer]}
             onMouseEnter={() => !canUseTouchScreen && setShouldShowArrows(true)}
             onMouseLeave={() => !canUseTouchScreen && setShouldShowArrows(false)}
+            
         >
             {page === -1 ? (
                 <BlockingView

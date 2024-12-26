@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import Breadcrumbs from '@components/Breadcrumbs';
 import {PressableWithoutFeedback} from '@components/Pressable';
@@ -39,7 +39,8 @@ function TopBar({breadcrumbLabel, activeWorkspaceID, shouldDisplaySearch = true,
         <View style={styles.w100}>
             <View
                 style={[styles.flexRow, styles.gap4, styles.mh3, styles.mv5, styles.alignItemsCenter, styles.justifyContentBetween]}
-                dataSet={{dragArea: true}}
+                data-dragArea = {true}
+                // dataSet={{dragArea: true}}
             >
                 <View style={[styles.flex1, styles.flexRow, styles.alignItemsCenter, styles.ml2]}>
                     <WorkspaceSwitcherButton policy={policy} />
@@ -59,7 +60,7 @@ function TopBar({breadcrumbLabel, activeWorkspaceID, shouldDisplaySearch = true,
                 {shouldDisplayCancelSearch && (
                     <PressableWithoutFeedback
                         accessibilityLabel={translate('common.cancel')}
-                        style={[styles.textBlue]}
+                        style={[styles.textBlue as ViewStyle]}
                         onPress={() => {
                             Navigation.goBack(ROUTES.SEARCH_CENTRAL_PANE.getRoute({query: SearchQueryUtils.buildCannedSearchQuery()}));
                         }}

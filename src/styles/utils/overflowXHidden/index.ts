@@ -1,7 +1,7 @@
 import type OverflowXHiddenStyles from './types';
 
 const overflowXHidden: OverflowXHiddenStyles = {
-    overflowX: 'hidden',
+    overflow: 'hidden',
 };
 
 export default overflowXHidden;

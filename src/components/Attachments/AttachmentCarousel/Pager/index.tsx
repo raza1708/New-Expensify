@@ -88,7 +88,7 @@ function AttachmentCarouselPager(
 
     const extractItemKey = useCallback(
         (item: Attachment, index: number) =>
-            typeof item.source === 'string' || typeof item.source === 'number' ? `source-${item.source}` : `reportActionID-${item.reportActionID}` ?? `index-${index}`,
+            typeof item.source === 'string' || typeof item.source === 'number' ? `source-${item.source}` : (item.reportActionID ? `reportActionID-${item.reportActionID}` : `index-${index}`),
         [],
     );
 

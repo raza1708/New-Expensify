@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {InteractionManager, View} from 'react-native';
+import {InteractionManager, View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import Button from '@components/Button';
 import ButtonWithDropdownMenu from '@components/ButtonWithDropdownMenu';
@@ -53,7 +53,8 @@ function HeaderWrapper({icon, children, text, value, isCannedQuery, onSubmit, se
 
     return (
         <View
-            dataSet={{dragArea: false}}
+            // icommented below line
+            // dataSet={{dragArea: false}}
             style={[styles.headerBar, isCentralPaneSettings && styles.headerBarDesktopHeight]}
         >
             {isCannedQuery ? (
@@ -249,7 +250,7 @@ function SearchPageHeader({queryJSON, hash}: SearchPageHeaderProps) {
         }
 
         if (options.length === 0) {
-            const emptyOptionStyle = {
+            const emptyOptionStyle: any = {
                 interactive: false,
                 iconFill: theme.icon,
                 iconHeight: variables.iconSizeLarge,

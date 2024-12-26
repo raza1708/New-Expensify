@@ -111,7 +111,7 @@ function OfflineWithFeedback({
                 type ChildComponentProps = ChildrenProps & {style?: AllStyles};
                 const childProps = child.props as ChildComponentProps;
                 const props: StrikethroughProps = {
-                    style: StyleUtils.combineStyles(childProps.style ?? [], styles.offlineFeedback.deleted, styles.userSelectNone),
+                    style: StyleUtils.combineStyles(childProps.style ?? [], styles.offlineFeedback.deleted as ViewStyle, styles.userSelectNone as ViewStyle),
                 };
 
                 if (childProps.children) {

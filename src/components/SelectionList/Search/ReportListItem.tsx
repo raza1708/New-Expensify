@@ -138,7 +138,8 @@ function ReportListItem<TItem extends ListItem>({
         <BaseListItem
             item={item}
             pressableStyle={listItemPressableStyle}
-            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone, styles.alignItemsCenter]}
+            // wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.userSelectNone, styles.alignItemsCenter]}
+            wrapperStyle={[styles.flexRow, styles.flex1, styles.justifyContentBetween, styles.alignItemsCenter]}
             containerStyle={[styles.mb2]}
             isFocused={isFocused}
             isDisabled={isDisabled}

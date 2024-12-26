@@ -27,7 +27,7 @@ function ChangeExpensifyLoginLink({credentials, onPress}: ChangeExpensifyLoginLi
         <View style={[styles.changeExpensifyLoginLinkContainer, styles.mt3]}>
             {!!credentials?.login && <Text style={styles.mr1}>{translate('loginForm.notYou', {user: formatPhoneNumber(credentials.login)})}</Text>}
             <PressableWithFeedback
-                style={[styles.link]}
+                style={[styles.badgeSuccess]}
                 onPress={onPress}
                 role={CONST.ROLE.LINK}
                 accessibilityLabel={translate('common.goBack')}

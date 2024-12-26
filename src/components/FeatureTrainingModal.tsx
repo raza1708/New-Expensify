@@ -187,7 +187,8 @@ function FeatureTrainingModal({
                     type={onboardingIsMediumOrLargerScreenWidth ? CONST.MODAL.MODAL_TYPE.CENTERED_UNSWIPEABLE : CONST.MODAL.MODAL_TYPE.BOTTOM_DOCKED}
                     onClose={closeModal}
                     innerContainerStyle={{
-                        boxShadow: 'none',
+                        //icommented the below line
+                        // boxShadow: 'none',
                         borderRadius: 16,
                         paddingBottom: 20,
                         paddingTop: onboardingIsMediumOrLargerScreenWidth ? undefined : MODAL_PADDING,

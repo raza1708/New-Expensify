@@ -34,7 +34,7 @@ function SendButton({isDisabled: isDisabledProp, handleSendMessage}: SendButtonP
         <View
             style={styles.justifyContentEnd}
             // Keep focus on the composer when Send message is clicked.
-            onMouseDown={(e) => e.preventDefault()}
+            onPointerDown={(e) => e.preventDefault()}
         >
             <GestureDetector
                 // A new GestureDetector instance must be created when switching from a large screen to a small screen

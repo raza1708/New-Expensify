@@ -62,7 +62,7 @@ function LHNOptionsList({style, contentContainerStyles, data, onSelectRow, optio
 
     const emptyLHNSubtitle = useMemo(
         () => (
-            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap, styles.textAlignCenter]}>
+            <View style={[styles.alignItemsCenter, styles.flexRow, styles.justifyContentCenter, styles.flexWrap]}>
                 <TextBlock
                     color={theme.textSupporting}
                     textStyles={[styles.textAlignCenter, styles.textNormal]}

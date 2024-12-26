@@ -53,7 +53,7 @@ function ParticipantLocalTime({participant}: ParticipantLocalTimeProps) {
     return (
         <View style={[styles.chatItemComposeSecondaryRow]}>
             <Text
-                style={[styles.chatItemComposeSecondaryRowSubText, styles.chatItemComposeSecondaryRowOffset, styles.pre]}
+                style={[styles.chatItemComposeSecondaryRowSubText, styles.chatItemComposeSecondaryRowOffset, styles.webViewStyles.tagStyles.pre]}
                 numberOfLines={1}
             >
                 {translate('reportActionCompose.localTime', {

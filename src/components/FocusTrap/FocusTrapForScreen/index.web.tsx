@@ -47,7 +47,7 @@ function FocusTrapForScreen({children, focusTrapSettings}: FocusTrapProps) {
                 trapStack: sharedTrapStack,
                 allowOutsideClick: true,
                 fallbackFocus: document.body,
-                delayInitialFocus: CONST.ANIMATED_TRANSITION,
+                // delayInitialFocus: CONST.ANIMATED_TRANSITION,
                 initialFocus: false,
                 setReturnFocus: false,
                 ...(focusTrapSettings?.focusTrapOptions ?? {}),

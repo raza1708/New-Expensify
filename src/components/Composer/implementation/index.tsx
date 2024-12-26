@@ -3,7 +3,7 @@ import lodashDebounce from 'lodash/debounce';
 import type {BaseSyntheticEvent, ForwardedRef} from 'react';
 import React, {useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react';
 // eslint-disable-next-line no-restricted-imports
-import type {NativeSyntheticEvent, TextInput, TextInputKeyPressEventData, TextInputSelectionChangeEventData} from 'react-native';
+import type {NativeSyntheticEvent, RegisteredStyle, TextInput, TextInputKeyPressEventData, TextInputSelectionChangeEventData, TextStyle} from 'react-native';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
 import type {ComposerProps} from '@components/Composer/types';
 import type {AnimatedMarkdownTextInputRef} from '@components/RNMarkdownTextInput';
@@ -322,19 +322,33 @@ function Composer(
         return styles.overflowAuto;
     }, [shouldContainScroll, styles.overflowAuto, styles.overflowScroll, styles.overscrollBehaviorContain, styles.overflowHidden, isScrollBarVisible]);
 
-    const inputStyleMemo = useMemo(
-        () => [
-            StyleSheet.flatten([style, {outline: 'none'}]),
+   const inputStyleMemo = useMemo(
+    () => {
+        const stylesArray = [
+            // StyleSheet.flatten([style, {outline: 'none'}]),
+            StyleSheet.flatten([style]),
             StyleUtils.getComposeTextAreaPadding(isComposerFullSize),
             Browser.isMobileSafari() || Browser.isSafari() ? styles.rtlTextRenderForSafari : {},
             scrollStyleMemo,
             StyleUtils.getComposerMaxHeightStyle(maxLines, isComposerFullSize),
             isComposerFullSize ? {height: '100%', maxHeight: 'none'} : undefined,
             textContainsOnlyEmojis ? styles.onlyEmojisTextLineHeight : {},
-        ],
+        ];
 
-        [style, styles.rtlTextRenderForSafari, styles.onlyEmojisTextLineHeight, scrollStyleMemo, StyleUtils, maxLines, isComposerFullSize, textContainsOnlyEmojis],
-    );
+        // Filter out any undefined values
+        return stylesArray.filter(Boolean);
+    },
+    [
+        style, 
+        styles.rtlTextRenderForSafari, 
+        styles.onlyEmojisTextLineHeight, 
+        scrollStyleMemo, 
+        StyleUtils, 
+        maxLines, 
+        isComposerFullSize, 
+        textContainsOnlyEmojis,
+    ]
+);
 
     return (
         <RNMarkdownTextInput
@@ -344,7 +358,7 @@ function Composer(
             placeholderTextColor={theme.placeholderText}
             ref={(el) => (textInput.current = el)}
             selection={selection}
-            style={[inputStyleMemo]}
+            style={[inputStyleMemo as any]}
             markdownStyle={markdownStyle}
             value={value}
             defaultValue={defaultValue}
@@ -355,7 +369,8 @@ function Composer(
             onContentSizeChange={(e) => {
                 updateIsFullComposerAvailable({maxLines, isComposerFullSize, isDisabled, setIsFullComposerAvailable}, e, styles);
             }}
-            disabled={isDisabled}
+            
+            // disabled={isDisabled}
             onKeyPress={handleKeyPress}
             addAuthTokenToImageURLCallback={addEncryptedAuthTokenToURL}
             imagePreviewAuthRequiredURLs={imagePreviewAuthRequiredURLs}

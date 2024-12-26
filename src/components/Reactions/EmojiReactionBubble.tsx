@@ -80,7 +80,8 @@ function EmojiReactionBubble(
             role={CONST.ROLE.BUTTON}
             accessibilityLabel={emojiCodes.join('')}
             accessible
-            dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
+            data-selection-scraper-hidden-element = {true}
+            // dataSet={{[CONST.SELECTION_SCRAPER_HIDDEN_ELEMENT]: true}}
         >
             <Text style={[styles.emojiReactionBubbleText, StyleUtils.getEmojiReactionBubbleTextStyle(isContextMenu)]}>{emojiCodes.join('')}</Text>
             {count > 0 && <Text style={[styles.reactionCounterText, StyleUtils.getEmojiReactionCounterTextStyle(hasUserReacted)]}>{count}</Text>}

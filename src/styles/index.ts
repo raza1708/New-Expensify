@@ -91,7 +91,15 @@ type Styles = Record<
 >;
 
 // touchCallout is an iOS safari only property that controls the display of the callout information when you touch and hold a target
-const touchCalloutNone: Pick<ViewStyle, 'WebkitTouchCallout'> = Browser.isMobileSafari() ? {WebkitTouchCallout: 'none'} : {};
+// const touchCalloutNone: Pick<ViewStyle, 'WebkitTouchCallout'> = Browser.isMobileSafari() ? {WebkitTouchCallout: 'none'} : {};
+export interface ExtendedViewStyle extends TextStyle {
+    WebkitTouchCallout?: 'none' | 'auto'; 
+
+  }
+  
+const touchCalloutNone: Pick<ExtendedViewStyle, 'WebkitTouchCallout'> = 
+  Browser.isMobileSafari() ? { WebkitTouchCallout: 'none' } : { WebkitTouchCallout: undefined };
+
 // to prevent vertical text offset in Safari for badges, new lineHeight values have been added
 const lineHeightBadge: Pick<TextStyle, 'lineHeight'> = Browser.isSafari() ? {lineHeight: variables.lineHeightXSmall} : {lineHeight: variables.lineHeightNormal};
 
@@ -244,7 +252,7 @@ const webViewStyles = (theme: ThemeColors) =>
 
 const styles = (theme: ThemeColors) =>
     ({
-        // Add all of our utility and helper styles
+    //     // Add all of our utility and helper styles
         ...spacing,
         ...borders,
         ...sizing,
@@ -270,7 +278,7 @@ const styles = (theme: ThemeColors) =>
             borderColor: theme.border,
             justifyContent: 'center',
             overflow: 'hidden',
-            boxShadow: variables.popoverMenuShadow,
+            // boxShadow: variables.popoverMenuShadow,
             paddingVertical: CONST.AUTO_COMPLETE_SUGGESTER.SUGGESTER_INNER_PADDING,
         },
 
@@ -283,6 +291,7 @@ const styles = (theme: ThemeColors) =>
             textAlign: 'left',
             ...writingDirection.ltr,
         },
+        
 
         emojiSuggestionsEmoji: {
             fontSize: variables.fontSizeMedium,
@@ -835,7 +844,7 @@ const styles = (theme: ThemeColors) =>
                     paddingBottom: 6,
                     borderWidth: 0,
                     color: theme.text,
-                    appearance: 'none',
+                    // appearance: 'none',
                     height: 26,
                     opacity: 1,
                     backgroundColor,
@@ -1034,7 +1043,7 @@ const styles = (theme: ThemeColors) =>
             borderColor: theme.appBG,
             display: 'flex',
             justifyContent: 'center',
-            justifyItems: 'center',
+            // justifyItems: 'center',
         },
 
         cameraFocusIndicator: {
@@ -1235,7 +1244,7 @@ const styles = (theme: ThemeColors) =>
         },
 
         textInputMultiline: {
-            scrollPadding: '23px 0 0 0',
+            // scrollPadding: '23px 0 0 0',
         },
 
         textInputMultilineContainer: {
@@ -1352,7 +1361,7 @@ const styles = (theme: ThemeColors) =>
                 },
 
                 inputWeb: {
-                    appearance: 'none',
+                    // appearance: 'none',
                     ...(disabled ? cursor.cursorDisabled : cursor.cursorPointer),
                     ...picker(theme),
                     backgroundColor,
@@ -1455,7 +1464,7 @@ const styles = (theme: ThemeColors) =>
         },
 
         lh140Percent: {
-            lineHeight: '140%',
+            // lineHeight: '140%',
         },
 
         formHelp: {
@@ -1659,7 +1668,7 @@ const styles = (theme: ThemeColors) =>
             fontSize: variables.fontSizeLabel,
             fontWeight: FontUtils.fontWeight.bold,
             width: 200,
-            textOverflow: 'ellipsis',
+            // textOverflow: 'ellipsis',
             overflow: 'hidden',
             ...whiteSpace.noWrap,
         },
@@ -2277,12 +2286,12 @@ const styles = (theme: ThemeColors) =>
         },
 
         emojiItemHighlighted: {
-            transition: '0.2s ease',
+            // transition: '0.2s ease',
             backgroundColor: theme.buttonDefaultBG,
         },
 
         emojiItemKeyboardHighlighted: {
-            transition: '0.2s ease',
+            // transition: '0.2s ease',
             borderWidth: 1,
             borderColor: theme.link,
             borderRadius: variables.buttonBorderRadius,
@@ -3370,7 +3379,7 @@ const styles = (theme: ThemeColors) =>
             alignItems: 'center',
             flexDirection: 'row',
             justifyContent: 'space-between',
-            boxShadow: `${theme.shadow}`,
+            // boxShadow: `${theme.shadow}`,
             ...spacing.p5,
         },
 
@@ -3391,13 +3400,19 @@ const styles = (theme: ThemeColors) =>
         },
 
         noSelect: {
-            boxShadow: 'none',
-            outlineStyle: 'none',
+            shadowOpacity: 0,       // iOS: Removes shadow
+            shadowRadius: 0,        // iOS: Removes shadow radius
+            elevation: 0,           // Android: Removes shadow (elevation)
+            backgroundColor: 'white',
+            padding: 10,
+            borderWidth: 0,        // Removes the border (outline)
+            // boxShadow: 'none',
+            // outlineStyle: 'none',
         },
 
-        boxShadowNone: {
-            boxShadow: 'none',
-        },
+        // boxShadowNone: {
+        //     boxShadow: 'none',
+        // },
 
         cardStyleNavigator: {
             overflow: 'hidden',
@@ -4296,7 +4311,7 @@ const styles = (theme: ThemeColors) =>
         },
 
         googleButtonContainer: {
-            colorScheme: 'light',
+            // colorScheme: 'light',
             width: 40,
             height: 40,
             alignItems: 'center',
@@ -4304,7 +4319,7 @@ const styles = (theme: ThemeColors) =>
         },
 
         googlePillButtonContainer: {
-            colorScheme: 'light',
+            // colorScheme: 'light',
             height: 40,
             width: 300,
             overflow: 'hidden',
@@ -4382,7 +4397,7 @@ const styles = (theme: ThemeColors) =>
         },
 
         willChangeTransform: {
-            willChange: 'transform',
+            // willChange: 'transform',
         },
 
         dropDownButtonCartIconContainerPadding: {
@@ -5052,7 +5067,7 @@ const styles = (theme: ThemeColors) =>
             lineHeight: 16,
             color: theme.white,
             userSelect: 'none',
-            WebkitUserSelect: 'none',
+            // WebkitUserSelect: 'none',
         },
 
         volumeSliderContainer: {
