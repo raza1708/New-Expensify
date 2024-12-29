@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import type {ImageSourcePropType, StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {View} from 'react-native';
 import type {SvgProps} from 'react-native-svg';
-import type {WebStyle} from 'react-native-web';
+// import type {WebStyle} from 'react-native-web';
 import type {MergeExclusive} from 'type-fest';
 import AutoEmailLink from '@components/AutoEmailLink';
 import Icon from '@components/Icon';
@@ -71,7 +71,7 @@ type BlockingViewAnimationProps = {
     animationStyles?: StyleProp<ViewStyle>;
 
     /** Style for the animation on web */
-    animationWebStyle?: WebStyle;
+    // animationWebStyle?: WebStyle;
 };
 
 // This page requires either an icon or an animation, but not both
@@ -91,7 +91,7 @@ function BlockingView({
     onLinkPress = () => Navigation.dismissModal(),
     shouldEmbedLinkWithSubtitle = false,
     animationStyles = [],
-    animationWebStyle = {},
+    // animationWebStyle = {},
     CustomSubtitle,
     contentFitImage,
     containerStyle,
@@ -140,7 +140,7 @@ function BlockingView({
                     loop
                     autoPlay
                     style={animationStyles}
-                    webStyle={animationWebStyle}
+                    // webStyle={animationWebStyle}
                 />
             )}
             {!!icon && (

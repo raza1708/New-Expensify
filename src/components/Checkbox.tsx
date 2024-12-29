@@ -33,7 +33,7 @@ declare module 'react-native' {
 
 declare module 'react-native' {
     export interface ViewProps {
-        onFocus?: null | ((event: FocusEventHandler) => void) | undefined;
+        onFocus?: null | ((event: FocusEvent) => void) | undefined;
         onMouseDown?: null | ((event: MouseEvent) => void) | undefined;
         onMouseEnter?: null | ((event: MouseEvent) => void) | undefined;
         onMouseLeave?: null | ((event: MouseEvent) => void) | undefined;
@@ -42,6 +42,7 @@ declare module 'react-native' {
 
     }
 }
+
 
 type CheckboxProps = Partial<ChildrenProps> & {
     /** Whether checkbox is checked */

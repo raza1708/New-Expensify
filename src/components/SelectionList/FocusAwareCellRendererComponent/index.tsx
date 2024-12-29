@@ -4,7 +4,7 @@ import type { FocusEventHandler } from 'react';
 import type { ListItem } from '@components/SelectionList/types';
 
 interface CellRendererProps<TItem> extends ViewProps {
-    onFocusCapture?: ((event: FocusEventHandler) => void) | undefined;
+    onFocusCapture?: ((event: FocusEvent) => void) | undefined;
     cellKey: string;
     children: React.ReactNode;
     index: number;

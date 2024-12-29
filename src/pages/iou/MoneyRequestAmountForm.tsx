@@ -254,7 +254,7 @@ function MoneyRequestAmountForm(
         <ScrollView contentContainerStyle={styles.flexGrow1}>
             <View
                 id={AMOUNT_VIEW_ID}
-                onMouseDown={(event) => onMouseDown(event, [AMOUNT_VIEW_ID])}
+                onMouseDown={(event) => onMouseDown(event as unknown as React.MouseEvent<Element>, [AMOUNT_VIEW_ID])}
                 style={[styles.moneyRequestAmountContainer, styles.flex1, styles.flexRow, styles.w100, styles.alignItemsCenter, styles.justifyContentCenter]}
             >
                 <MoneyRequestAmountInput
@@ -292,7 +292,7 @@ function MoneyRequestAmountForm(
                 )}
             </View>
             <View
-                onMouseDown={(event) => onMouseDown(event, [NUM_PAD_CONTAINER_VIEW_ID, NUM_PAD_VIEW_ID])}
+                onMouseDown={(event) => onMouseDown(event as unknown as React.MouseEvent<Element>, [NUM_PAD_CONTAINER_VIEW_ID, NUM_PAD_VIEW_ID])}
                 style={[styles.w100, styles.justifyContentEnd, styles.pageWrapper, styles.pt0]}
                 id={NUM_PAD_CONTAINER_VIEW_ID}
             >

@@ -28,7 +28,7 @@ function Plaid({onNext}: PlaidProps) {
 
     const handleNextPress = useCallback(() => {
         const selectedPlaidBankAccount = (plaidData?.bankAccounts ?? []).find(
-            (account) => account.plaidAccountID === reimbursementAccountDraft?.[BANK_INFO_STEP_KEYS.PLAID_ACCOUNT_ID] ?? null,
+            (account) => account.plaidAccountID === reimbursementAccountDraft?.[BANK_INFO_STEP_KEYS.PLAID_ACCOUNT_ID] || null,
         );
 
         const bankAccountData = {

@@ -2,7 +2,7 @@ import {useIsFocused} from '@react-navigation/native';
 import type {StackScreenProps} from '@react-navigation/stack';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {InteractionManager, View} from 'react-native';
-import type {TextInput} from 'react-native';
+import type {TextInput, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import type {ValueOf} from 'type-fest';
 import Badge from '@components/Badge';
@@ -253,7 +253,7 @@ function ReportParticipantsPage({report, route}: ReportParticipantsPageProps) {
             return header;
         }
 
-        return <View style={[styles.peopleRow, styles.userSelectNone, styles.ph9, styles.pb5, shouldShowTextInput ? styles.mt3 : styles.mt0]}>{header}</View>;
+        return <View style={[styles.peopleRow, styles.userSelectNone as ViewStyle, styles.ph9, styles.pb5, shouldShowTextInput ? styles.mt3 : styles.mt0]}>{header}</View>;
     }, [styles, translate, isGroupChat, shouldShowTextInput, StyleUtils, canSelectMultiple]);
 
     const bulkActionsButtonOptions = useMemo(() => {

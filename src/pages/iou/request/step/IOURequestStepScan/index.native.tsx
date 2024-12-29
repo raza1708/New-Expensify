@@ -1,7 +1,7 @@
 import {useFocusEffect} from '@react-navigation/core';
 import {Str} from 'expensify-common';
 import React, {useCallback, useMemo, useRef, useState} from 'react';
-import {ActivityIndicator, Alert, AppState, InteractionManager, View} from 'react-native';
+import {ActivityIndicator, Alert, AppState, InteractionManager, View, ViewStyle} from 'react-native';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import {useOnyx} from 'react-native-onyx';
 import {RESULTS} from 'react-native-permissions';
@@ -591,7 +591,7 @@ function IOURequestStepScan({
                 />
             )}
             {cameraPermissionStatus !== RESULTS.GRANTED && (
-                <View style={[styles.cameraView, styles.permissionView, styles.userSelectNone]}>
+                <View style={[styles.cameraView, styles.permissionView, styles.userSelectNone as ViewStyle]}>
                     <ImageSVG
                         contentFit="contain"
                         src={Hand}

@@ -1,6 +1,6 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import React, {useEffect, useMemo, useState} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import type {ValueOf} from 'type-fest';
 import Button from '@components/Button';
@@ -199,14 +199,14 @@ function ExpensifyCardPage({
                                     description={translate('cardPage.availableSpend')}
                                     title={formattedAvailableSpendAmount}
                                     interactive={false}
-                                    titleStyle={styles.newKansasLarge}
+                                    titleStyle={styles.newKansasLarge as ViewStyle}
                                 />
                                 {!!limitNameKey && !!limitTitleKey && (
                                     <MenuItemWithTopDescription
                                         description={translate(limitNameKey)}
                                         title={translate(limitTitleKey, {formattedLimit: formattedAvailableSpendAmount})}
                                         interactive={false}
-                                        titleStyle={styles.walletCardLimit}
+                                        titleStyle={styles.walletCardLimit as ViewStyle}
                                         numberOfLinesTitle={3}
                                     />
                                 )}
@@ -225,7 +225,7 @@ function ExpensifyCardPage({
                                                     description={translate('cardPage.virtualCardNumber')}
                                                     title={CardUtils.maskCard('')}
                                                     interactive={false}
-                                                    titleStyle={styles.walletCardNumber}
+                                                    titleStyle={styles.walletCardNumber as ViewStyle}
                                                     shouldShowRightComponent
                                                     rightComponent={
                                                         <Button
@@ -245,7 +245,7 @@ function ExpensifyCardPage({
                                         )}
                                         <MenuItemWithTopDescription
                                             title={translate('cardPage.reportFraud')}
-                                            titleStyle={styles.walletCardMenuItem}
+                                            titleStyle={styles.walletCardMenuItem as ViewStyle}
                                             icon={Expensicons.Flag}
                                             shouldShowRightIcon
                                             onPress={() => Navigation.navigate(ROUTES.SETTINGS_REPORT_FRAUD.getRoute(String(card.cardID)))}
@@ -262,7 +262,7 @@ function ExpensifyCardPage({
                                                 description={translate('cardPage.physicalCardNumber')}
                                                 title={CardUtils.maskCard(card?.lastFourPAN)}
                                                 interactive={false}
-                                                titleStyle={styles.walletCardNumber}
+                                                titleStyle={styles.walletCardNumber as ViewStyle}
                                             />
                                             <MenuItem
                                                 title={translate('reportCardLostOrDamaged.report')}

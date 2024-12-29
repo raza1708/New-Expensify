@@ -176,7 +176,7 @@ function SearchTypeMenuNarrow({typeMenuItems, activeItemIndex, queryJSON, title,
                 onPress={openMenu}
             >
                 {({hovered}) => (
-                    <Animated.View style={[styles.tabSelectorButton, styles.tabBackground(hovered, true, theme.border), styles.w100, StyleUtils.getHeight(variables.componentSizeNormal)]}>
+                    <Animated.View style={[styles.tabSelectorButton, styles.tabBackground(hovered as boolean, true, theme.border), styles.w100, StyleUtils.getHeight(variables.componentSizeNormal)]}>
                         <View style={[styles.flexRow, styles.gap2, styles.alignItemsCenter, titleViewStyles]}>
                             <Icon
                                 src={menuIcon}

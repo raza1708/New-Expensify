@@ -29,7 +29,7 @@ const includeModules = [
     'react-native-animatable',
     'react-native-reanimated',
     'react-native-picker-select',
-    'react-native-web',
+    // 'react-native-web',
     'react-native-webview',
     '@react-native-picker',
     'react-native-modal',
@@ -229,7 +229,7 @@ const getCommonConfiguration = ({file = '.env', platform = 'web'}: Environment):
             // eslint-disable-next-line @typescript-eslint/naming-convention
             'react-native-config': 'react-web-config',
             // eslint-disable-next-line @typescript-eslint/naming-convention
-            'react-native$': 'react-native-web',
+            // 'react-native$': 'react-native-web',
             // Module alias for web & desktop
             // https://webpack.js.org/configuration/resolve/#resolvealias
             // eslint-disable-next-line @typescript-eslint/naming-convention

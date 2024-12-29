@@ -2,7 +2,7 @@ import type {ForwardedRef} from 'react';
 import React, {forwardRef, useCallback, useMemo} from 'react';
 import {View} from 'react-native';
 // eslint-disable-next-line no-restricted-imports
-import type {ScrollView as ScrollViewRN} from 'react-native';
+import type {ScrollView as ScrollViewRN, ViewStyle} from 'react-native';
 import type {OnyxEntry} from 'react-native-onyx';
 import * as Expensicons from '@components/Icon/Expensicons';
 import MenuItem from '@components/MenuItem';
@@ -132,7 +132,7 @@ function ApprovalWorkflowEditor({approvalWorkflow, removeApprovalWorkflow, polic
 
                 <MenuItemWithTopDescription
                     title={members}
-                    titleStyle={styles.textNormalThemeText}
+                    titleStyle={styles.textNormalThemeText as ViewStyle}
                     numberOfLinesTitle={4}
                     description={translate('workflowsExpensesFromPage.title')}
                     descriptionTextStyle={!!members && styles.textLabelSupportingNormal}
@@ -157,7 +157,7 @@ function ApprovalWorkflowEditor({approvalWorkflow, removeApprovalWorkflow, polic
                                 // eslint-disable-next-line react/no-array-index-key
                                 key={`approver-${approver?.email}-${approverIndex}`}
                                 title={approver?.displayName}
-                                titleStyle={styles.textNormalThemeText}
+                                titleStyle={styles.textNormalThemeText as ViewStyle}
                                 wrapperStyle={styles.sectionMenuItemTopDescription}
                                 description={approverDescription(approverIndex)}
                                 descriptionTextStyle={!!approver?.displayName && styles.textLabelSupportingNormal}

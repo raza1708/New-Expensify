@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 import Icon from '@components/Icon';
 import * as Expensicons from '@components/Icon/Expensicons';
 import OfflineWithFeedback from '@components/OfflineWithFeedback';

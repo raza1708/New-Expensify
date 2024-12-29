@@ -8,7 +8,8 @@ import * as Link from '@userActions/Link';
 import CONST from '@src/CONST';
 import type { TextProps } from './Text';
 import Text from './Text';
-import { View } from 'react-native-web';
+import { View } from 'react-native';
+// import { View } from 'react-native-web';
 
 type LinkProps = {
     /** Link to open in new tab */
@@ -61,7 +62,9 @@ function TextLink({ href, onPress, children, style, onMouseDown = (event) => eve
     };
 
     return (
-        <View onKeyDown={openLinkOnEnterKey} onMouseDown={onMouseDown}>
+            // icommented and modifified code here
+        <View>
+        {/* <View onKeyDown={openLinkOnEnterKey} onMouseDown={onMouseDown}> */}
             <Text
                 style={[styles.link, style]}
                 role={CONST.ROLE.LINK}

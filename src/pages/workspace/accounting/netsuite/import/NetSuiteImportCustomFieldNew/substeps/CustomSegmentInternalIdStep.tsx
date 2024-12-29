@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import FormProvider from '@components/Form/FormProvider';
 import InputWrapper from '@components/Form/InputWrapper';
 import type {FormInputErrors, FormOnyxValues} from '@components/Form/types';
@@ -75,7 +75,7 @@ function CustomSegmentInternalIdStep({customSegmentType, onNext, isEditing, netS
                     ref={inputCallbackRef}
                     defaultValue={netSuiteCustomFieldFormValues[INPUT_IDS.INTERNAL_ID]}
                 />
-                <View style={[styles.flex1, styles.mv3, styles.renderHTML, styles.textDecorationSkipInkNone]}>
+                <View style={[styles.flex1, styles.mv3, styles.renderHTML, styles.textDecorationSkipInkNone as ViewStyle]}>
                     <RenderHTML
                         html={`<comment>${Parser.replace(
                             translate(`workspace.netsuite.import.importCustomFields.customSegments.addForm.${customSegmentRecordType}InternalIDFooter`),

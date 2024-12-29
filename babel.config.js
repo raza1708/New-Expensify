@@ -20,7 +20,7 @@ const defaultPresets = ['@babel/preset-react', ['@babel/preset-env', {targets: {
 const defaultPlugins = [
     ['babel-plugin-react-compiler', ReactCompilerConfig], // must run first!
     // Adding the commonjs: true option to react-native-web plugin can cause styling conflicts
-    ['react-native-web'],
+    // ['react-native-web'],
 
     '@babel/transform-runtime',
     '@babel/plugin-proposal-class-properties',
@@ -41,7 +41,7 @@ if (!process.env.ELECTRON_ENV && process.env.npm_lifecycle_event !== 'desktop') 
     defaultPlugins.push([
         '@fullstory/babel-plugin-annotate-react',
         {
-            'react-native-web': true,
+            // 'react-native-web': true,
             native: true,
         },
     ]);

@@ -1,7 +1,7 @@
 import {useIsFocused} from '@react-navigation/native';
 import {Str} from 'expensify-common';
 import React, {useCallback, useContext, useEffect, useMemo, useReducer, useRef, useState} from 'react';
-import {ActivityIndicator, PanResponder, PixelRatio, View} from 'react-native';
+import {ActivityIndicator, PanResponder, PixelRatio, View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import type Webcam from 'react-webcam';
 import type {TupleToUnion} from 'type-fest';
@@ -628,7 +628,7 @@ function IOURequestStepScan({
                     />
                 )}
                 {cameraPermissionState !== 'granted' && isQueriedPermissionState && (
-                    <View style={[styles.flex1, styles.permissionView, styles.userSelectNone]}>
+                    <View style={[styles.flex1, styles.permissionView, styles.userSelectNone as ViewStyle]}>
                         <Icon
                             src={Hand}
                             width={CONST.RECEIPT.HAND_ICON_WIDTH}
@@ -726,7 +726,7 @@ function IOURequestStepScan({
             </View>
 
             <View
-                style={[styles.uploadFileViewTextContainer, styles.userSelectNone]}
+                style={[styles.uploadFileViewTextContainer, styles.userSelectNone as ViewStyle]}
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...panResponder.panHandlers}
             >

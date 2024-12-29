@@ -1,6 +1,6 @@
 /* eslint-disable react-compiler/react-compiler */
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Dimensions, Pressable} from 'react-native';
+import {Dimensions} from 'react-native';
 import type {EmitterSubscription, GestureResponderEvent, View} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import AddPaymentMethodMenu from '@components/AddPaymentMethodMenu';

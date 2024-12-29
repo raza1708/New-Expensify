@@ -1,7 +1,7 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import {Str} from 'expensify-common';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import type {OnyxEntry} from 'react-native-onyx';
 import {useOnyx} from 'react-native-onyx';
 import type {ValueOf} from 'type-fest';
@@ -737,7 +737,7 @@ function ReportDetailsPage({policies, report, route}: ReportDetailsPageProps) {
                     shouldShowRightIcon={!shouldDisableRename}
                     interactive={!shouldDisableRename}
                     title={StringUtils.lineBreaksToSpaces(reportName)}
-                    titleStyle={styles.newKansasLarge}
+                    titleStyle={styles.newKansasLarge as ViewStyle}
                     titleContainerStyle={shouldDisableRename && styles.alignItemsCenter}
                     shouldCheckActionAllowedOnPress={false}
                     description={!shouldDisableRename ? roomDescription : ''}
@@ -784,7 +784,7 @@ function ReportDetailsPage({policies, report, route}: ReportDetailsPageProps) {
                     shouldShowRightIcon={!isFieldDisabled}
                     interactive={!isFieldDisabled}
                     title={reportName}
-                    titleStyle={styles.newKansasLarge}
+                    titleStyle={styles.newKansasLarge as ViewStyle}
                     shouldCheckActionAllowedOnPress={false}
                     description={Str.UCFirst(titleField.name)}
                     onPress={() => Navigation.navigate(ROUTES.EDIT_REPORT_FIELD_REQUEST.getRoute(report.reportID, report.policyID ?? '-1', titleField.fieldID ?? '-1', backTo))}

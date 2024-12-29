@@ -98,7 +98,7 @@ function ReportFieldsListValuesPage({
                 text: value,
                 keyForList: value,
                 isSelected: selectedValues[value] && canSelectMultiple,
-                enabled: !disabledListValues.at(index) ?? true,
+                enabled: !disabledListValues.at(index) || true,
                 rightElement: <ListItemRightCaretWithLabel labelText={disabledListValues.at(index) ? translate('workspace.common.disabled') : translate('workspace.common.enabled')} />,
             }))
             .sort((a, b) => localeCompare(a.value, b.value));

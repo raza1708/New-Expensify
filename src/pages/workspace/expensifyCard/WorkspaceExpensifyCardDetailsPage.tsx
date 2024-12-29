@@ -1,6 +1,6 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import React, {useCallback, useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import ExpensifyCardImage from '@assets/images/expensify-card.svg';
 import Badge from '@components/Badge';
@@ -116,14 +116,14 @@ function WorkspaceExpensifyCardDetailsPage({route}: WorkspaceExpensifyCardDetail
                                 description={translate(isVirtual ? 'cardPage.virtualCardNumber' : 'cardPage.physicalCardNumber')}
                                 title={CardUtils.maskCard(card?.lastFourPAN)}
                                 interactive={false}
-                                titleStyle={styles.walletCardNumber}
+                                titleStyle={styles.walletCardNumber as ViewStyle}
                             />
                             <OfflineWithFeedback pendingAction={card?.pendingFields?.availableSpend}>
                                 <MenuItemWithTopDescription
                                     description={translate('cardPage.availableSpend')}
                                     title={formattedAvailableSpendAmount}
                                     interactive={false}
-                                    titleStyle={styles.newKansasLarge}
+                                    titleStyle={styles.newKansasLarge as ViewStyle}
                                 />
                             </OfflineWithFeedback>
                             <OfflineWithFeedback pendingAction={card?.nameValuePairs?.pendingFields?.unapprovedExpenseLimit}>

@@ -1,22 +1,22 @@
-import { PortalProvider } from '@gorhom/portal';
+// import { PortalProvider } from '@gorhom/portal';
 import React from 'react';
 import { LogBox } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { KeyboardProvider } from 'react-native-keyboard-controller';
-import { PickerStateProvider } from 'react-native-picker-select';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import '../wdyr';
+// import { KeyboardProvider } from 'react-native-keyboard-controller';
+// import { PickerStateProvider } from 'react-native-picker-select';
+// import { SafeAreaProvider } from 'react-native-safe-area-context';
+// import '../wdyr';
 // import ActiveElementRoleProvider from './components/ActiveElementRoleProvider';
 // import ActiveWorkspaceContextProvider from './components/ActiveWorkspaceProvider';
 import ColorSchemeWrapper from './components/ColorSchemeWrapper';
 import ComposeProviders from './components/ComposeProviders';
 import CustomStatusBarAndBackground from './components/CustomStatusBarAndBackground';
-import CustomStatusBarAndBackgroundContextProvider from './components/CustomStatusBarAndBackground/CustomStatusBarAndBackgroundContextProvider';
+// import CustomStatusBarAndBackgroundContextProvider from './components/CustomStatusBarAndBackground/CustomStatusBarAndBackgroundContextProvider';
 import ErrorBoundary from './components/ErrorBoundary';
 // import HTMLEngineProvider from './components/HTMLEngineProvider';
 import InitialURLContextProvider from './components/InitialURLContextProvider';
-import { LocaleContextProvider } from './components/LocaleContextProvider';
-import OnyxProvider from './components/OnyxProvider';
+// import { LocaleContextProvider } from './components/LocaleContextProvider';
+// import OnyxProvider from './components/OnyxProvider';
 // import PopoverContextProvider from './components/PopoverProvider';
 // import SafeArea from './components/SafeArea';
 // import ScrollOffsetContextProvider from './components/ScrollOffsetContextProvider';
@@ -35,7 +35,7 @@ import CONFIG from './CONFIG';
 import Expensify from './Expensify';
 import useDefaultDragAndDrop from './hooks/useDefaultDragAndDrop';
 // import {ReportIDsContextProvider} from './hooks/useReportIDs';
-// import OnyxUpdateManager from './libs/actions/OnyxUpdateManager';
+import OnyxUpdateManager from './libs/actions/OnyxUpdateManager';
 // import {ReportAttachmentsProvider} from './pages/home/report/ReportAttachmentsContext';
 import type { Route } from './ROUTES';
 import { SplashScreenStateContextProvider } from './SplashScreenStateContext';
@@ -60,7 +60,7 @@ const StrictModeWrapper = CONFIG.USE_REACT_STRICT_MODE_IN_DEV ? React.StrictMode
 
 function App({ url }: AppProps) {
     useDefaultDragAndDrop();
-    // OnyxUpdateManager();
+    OnyxUpdateManager();
 
     return (
         <StrictModeWrapper>
@@ -69,23 +69,23 @@ function App({ url }: AppProps) {
                     <GestureHandlerRootView style={fill}>
                         <ComposeProviders
                             components={[
-                                OnyxProvider,
+                                // OnyxProvider,
                                 // ThemeProvider,
                                 // ThemeStylesProvider,
                                 // ThemeIllustrationsProvider,
-                                SafeAreaProvider,
-                                PortalProvider,
+                                // SafeAreaProvider,
+                                // PortalProvider,
                                 // SafeArea,
-                                LocaleContextProvider,
+                                // LocaleContextProvider,
                                 // HTMLEngineProvider,
                                 // KeyboardStateProvider,
                                 // PopoverContextProvider,
                                 // CurrentReportIDContextProvider,
                                 // ScrollOffsetContextProvider,
                                 // ReportAttachmentsProvider,
-                                PickerStateProvider,
+                                // PickerStateProvider,
                                 // EnvironmentProvider,
-                                CustomStatusBarAndBackgroundContextProvider,
+                                // CustomStatusBarAndBackgroundContextProvider,
                                 // ActiveElementRoleProvider,
                                 // ActiveWorkspaceContextProvider,
                                 // ReportIDsContextProvider,
@@ -93,7 +93,7 @@ function App({ url }: AppProps) {
                                 // FullScreenContextProvider,
                                 // VolumeContextProvider,
                                 // VideoPopoverMenuContextProvider,
-                                KeyboardProvider,
+                                // KeyboardProvider,
                                 // SearchRouterContextProvider,
                             ]}
                         >

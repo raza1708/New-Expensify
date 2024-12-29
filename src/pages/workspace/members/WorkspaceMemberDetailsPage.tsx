@@ -1,6 +1,6 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import type {OnyxEntry} from 'react-native-onyx';
 import type {ValueOf} from 'type-fest';
@@ -342,7 +342,7 @@ function WorkspaceMemberDetailsPage({personalDetails, policy, route}: WorkspaceM
                                                             shouldRemoveHoverBackground={isCardDeleted}
                                                             disabled={isCardDeleted}
                                                             shouldShowRightIcon={!isCardDeleted}
-                                                            style={[isCardDeleted ? styles.offlineFeedback.deleted : {}]}
+                                                            style={[isCardDeleted ? styles.offlineFeedback.deleted as ViewStyle : {}]}
                                                         />
                                                     </OfflineWithFeedback>
                                                 );

@@ -1,7 +1,7 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import {format, parseISO} from 'date-fns';
 import React, {useState} from 'react';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, View, ViewStyle} from 'react-native';
 import {useOnyx} from 'react-native-onyx';
 import ConfirmModal from '@components/ConfirmModal';
 import HeaderWithBackButton from '@components/HeaderWithBackButton';
@@ -114,7 +114,7 @@ function WorkspaceCompanyCardDetailsPage({route}: WorkspaceCompanyCardDetailsPag
                                 description={translate('workspace.moreFeatures.companyCards.cardNumber')}
                                 title={CardUtils.maskCardNumber(card?.cardName ?? '')}
                                 interactive={false}
-                                titleStyle={styles.walletCardNumber}
+                                titleStyle={styles.walletCardNumber as ViewStyle}
                             />
                             <OfflineWithFeedback
                                 pendingAction={card?.nameValuePairs?.pendingFields?.cardTitle}

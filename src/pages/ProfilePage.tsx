@@ -1,7 +1,7 @@
 import type {StackScreenProps} from '@react-navigation/stack';
 import {Str} from 'expensify-common';
 import React, {useEffect, useMemo} from 'react';
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import type {OnyxEntry} from 'react-native-onyx';
 import {useOnyx} from 'react-native-onyx';
 import AutoUpdateTime from '@components/AutoUpdateTime';
@@ -287,7 +287,7 @@ function ProfilePage({route}: ProfilePageProps) {
                                 titleStyle={styles.flex1}
                                 icon={Expensicons.Pencil}
                                 onPress={() => ReportUtils.navigateToPrivateNotes(report, session, navigateBackTo)}
-                                wrapperStyle={styles.breakAll}
+                                wrapperStyle={styles.breakAll as ViewStyle}
                                 shouldShowRightIcon
                                 brickRoadIndicator={ReportActions.hasErrorInPrivateNotes(report) ? CONST.BRICK_ROAD_INDICATOR_STATUS.ERROR : undefined}
                             />

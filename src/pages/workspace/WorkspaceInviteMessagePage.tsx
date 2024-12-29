@@ -155,7 +155,8 @@ function WorkspaceInviteMessagePage({policy, route, currentUserPersonalDetails}:
                             onPress={openPrivacyURL}
                             role={CONST.ROLE.LINK}
                             accessibilityLabel={translate('common.privacy')}
-                            href={CONST.PRIVACY_URL}
+                            // icommented below line
+                            // href={CONST.PRIVACY_URL}
                             style={[styles.mv2, styles.alignSelfStart]}
                         >
                             <View style={[styles.flexRow]}>

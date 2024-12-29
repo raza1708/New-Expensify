@@ -1,7 +1,7 @@
 import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 import lodashDebounce from 'lodash/debounce';
 import isEmpty from 'lodash/isEmpty';
-import type {ForwardedRef} from 'react';
+import type {FocusEventHandler, ForwardedRef} from 'react';
 import React, {forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react';
 import type {LayoutChangeEvent, SectionList as RNSectionList, TextInput as RNTextInput, SectionListData, SectionListRenderItemInfo} from 'react-native';
 import {View} from 'react-native';
