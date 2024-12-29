@@ -3,9 +3,9 @@ import React from 'react'
 
 const Testme = () => {
   return (
-    // <View style={styles.raza}>
-      // <Text style ={styles.raza}>Testme</Text>
-    // </View>
+    <View style={styles.raza}>
+      <Text style ={styles.raza}>Testme</Text>
+    </View>
   )
 }
 
@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     textDecorationLine: 'none',
     textDecorationStyle: 'dotted',
-    wordBreak: 'break-word',
     
   }
 })

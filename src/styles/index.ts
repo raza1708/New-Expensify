@@ -44,6 +44,17 @@ import wordBreak from './utils/wordBreak';
 import writingDirection from './utils/writingDirection';
 import variables from './variables';
 
+declare module 'react-native' {
+    export interface TextStyle {
+        whiteSpace?: 'nowrap' | 'pre-wrap' | 'pre';            // You can specify other values if needed
+        wordBreak?: 'break-word' | 'break-all';          
+        textUnderlinePosition?: 'under' | 'left' | 'right';
+        textDecorationSkipInk?: 'auto' | 'none';
+        visibility?: 'visible' | 'hidden';
+      
+        }
+}
+
 type ColorScheme = ValueOf<typeof CONST.COLOR_SCHEME>;
 type StatusBarStyle = ValueOf<typeof CONST.STATUS_BAR_STYLE>;
 

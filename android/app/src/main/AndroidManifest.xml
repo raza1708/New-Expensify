@@ -117,7 +117,7 @@
 
         <meta-data
             android:name="com.mapbox.AccessToken"
-            android:value="sk.eyJ1IjoicmF6YTE3MDgiLCJhIjoiY20zNDZpazF3MWhlMzJrc2FneXdvazg0dyJ9.VbzMDWZOpkBwslk2Sr7DTA" />
+            android:value="" />
         <service android:name="com.mapbox.android.telemetry.MapboxEventService" android:exported="true" />
         <service android:name="com.mapbox.android.telemetry.MapboxTelemetryService" android:exported="true" />
 
